@@ -19,7 +19,7 @@
 </head>
 <body>
     <h1>Autenticación</h1>
-    <h1>Sesión</h1>
+    <h1>Hola <output id="nombre"></output></h1>
     <fieldset>
       <legend>Email</legend>
       <output id="email"><progress max="100">Cargando…</progress></output>
@@ -32,22 +32,8 @@
     <button type="button" onclick="terminaSesión()">Terminar Sesión</button>
     <footer>Copyright &copy; 2021 Sanchez Felix Eduardo.</footer>
 </body>
+<script src="js/conection.js"></script>
 <script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  var firebaseConfig = {
-    apiKey: "AIzaSyA14Vc16_jkjUzCWBpjwTy_t-Hwtz2Wt5k",
-    authDomain: "cuponerawal.firebaseapp.com",
-    projectId: "cuponerawal",
-    storageBucket: "cuponerawal.appspot.com",
-    messagingSenderId: "406474058038",
-    appId: "1:406474058038:web:62a527c117af27f3b52b97",
-    measurementId: "G-WEEL5GKJB2"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-
   //autenticacion
    //@ts-check
       /** Conexión al sistema de autenticación de Firebase. */
@@ -97,5 +83,6 @@
         alert(e.message);
       }
 </script>
+
 <script src="js/app.js"></script>
 </html>
