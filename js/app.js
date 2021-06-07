@@ -6,7 +6,7 @@ let infoUser={name:'',email:''}
 
 //mandar a llamar una bd
 const usuario = db.collection("Usuarios");
-const usuarios;
+var usuarios;
 
 //Obtener informacion del usuario logeado
 auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.displayName})
