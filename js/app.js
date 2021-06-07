@@ -10,25 +10,25 @@ const usuario = db.collection("Usuarios");
 //Obtener informacion del usuario logeado
 auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.displayName})
 
-const addUser=(points)=>{
+//agrega valores a la coleccion
+const addUser=(phone)=>{
   usuario.doc().set({
       name: infoUser.name,
       mail: infoUser.email,
-      points,
+      phone,
+      coupons: ['BIENBENIDA2021'],
+      points: 1,
   })}
 
+//obtiene etiqueta del formulario
 let agregarUsuarios=document.getElementById("agregarUsuarios")
+//Funcion agrega datos a "Usuarios"
 agregarUsuarios.addEventListener("submit",async (e)=>{
+//evita recargo de pagina
  e.preventDefault();
- var points=agregarUsuarios["points"]
- await addUser(points.value)
+ //obtiene valor del campo HTML puntos
+ var telefono=agregarUsuarios["telefono"]
+ //llama a la funcion addUser, para agregar datos
+ await addUser(telefono.value)
 
 })
-//crear coleccion 
-const createUser = {
-    name: infoUser.name,
-    points: 10,
-    coupons: ["ABCD323","LECHEECHE1234"],
-    phone: "55-55-55-55-55",
-    mail: infoUser.email,
-}
