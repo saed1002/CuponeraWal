@@ -23,10 +23,10 @@ const addUser=(phone)=>{
 
 //obtener usuarios
 let leerUsuarios=document.getElementById("leerUsuarios")
-usuario.
+ usuario.
 orderBy("name","asc").onSnapshot(
-    snapshot=>{
-        snapshot.forEach(document=>{
+    async snapshot=>{
+        await snapshot.forEach((document)=>{
             usuarios=[{
             id:document.id,
             name: document.name,
