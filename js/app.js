@@ -10,14 +10,22 @@ const usuario = db.collection("Usuarios");
 //Obtener informacion del usuario logeado
 auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.displayName})
 
+const addUser=(points)=>{
+  usuario.doc().set({
+      points
+  })}
+
+let agregarUsuarios=document.getElementById("agregarUsuarios")
+agregarUsuarios.addEventListener("submit",async (e)=>{
+ var points=agregarUsuarios["points"]
+ await addUser(points.value)
+
+})
 //crear coleccion 
-const createUser ={
+const createUser = {
     name: infoUser.name,
     points: 10,
     coupons: ["ABCD323","LECHEECHE1234"],
     phone: "55-55-55-55-55",
     mail: infoUser.email,
 }
- //montar
-const newUser = usuario.add(createUser);
-console.log(newUser.name);
