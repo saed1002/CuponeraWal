@@ -12,11 +12,14 @@ auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.display
 
 const addUser=(points)=>{
   usuario.doc().set({
-      points
+      name: infoUser.name,
+      mail: infoUser.email,
+      points,
   })}
 
 let agregarUsuarios=document.getElementById("agregarUsuarios")
 agregarUsuarios.addEventListener("submit",async (e)=>{
+e.preventDefault();
  var points=agregarUsuarios["points"]
  await addUser(points.value)
 
