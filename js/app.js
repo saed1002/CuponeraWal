@@ -17,6 +17,7 @@ const addUser=(points)=>{
 
 let agregarUsuarios=document.getElementById("agregarUsuarios")
 agregarUsuarios.addEventListener("submit",async (e)=>{
+ e.preventDefault();
  var points=agregarUsuarios["points"]
  await addUser(points.value)
 
