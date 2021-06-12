@@ -20,18 +20,23 @@
 </body>
 </head>
 <body>
-    <h1>Hola <output id="nombre"></output></h1>
-    <div id="informacionUsuario">
-    <fieldset>
-      <legend>Email</legend>
-      <output id="email"><progress max="100">Cargando…</progress></output>
-    </fieldset>
-    <fieldset>
-      <legend>Nombre</legend>
-      <output id="nombre"></output>
-    </fieldset>
-    <figure><img id="avatar" alt="Avatar"></figure>
-    <button type="button" onclick="terminaSesión()">Terminar Sesión</button>
+    <div id="informacionUsuario" class="row justify-content-md-center">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <fieldset class="card-title">
+            <legend>Nombre</legend>
+            <output id="nombre"></output>
+          </fieldset>
+          <p class="card-text">
+            <fieldset>
+                <legend>Email</legend>
+                <output id="email"><progress max="100">Cargando…</progress></output>
+            </fieldset>
+            <figure><img id="avatar" alt="Avatar"></figure>
+        </p>
+        <button class="btn btn-alert" type="button" onclick="terminaSesión()">Terminar Sesión</button>
+    </div>
+    </div>
     <form id="agregarUsuarios">
         <fieldset>
           <legend>Telefono</legend>
