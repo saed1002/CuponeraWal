@@ -22,16 +22,25 @@ const addUser=(phone)=>{
   })}
 
 //obtener usuarios
-usuarios = usuario.get();
-document.getElementById("leerUsuarios").innerHTML+=`
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">${usuarios.name} - ${usuarios.email}</h5>
-    <p class="card-text">${usuarios.coupons}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-`;
+usuario.
+  orderBy("name", "asc").
+  onSnapshot(
+  snapshot => {
+    console.log(snapshot.size);
+    snapshot.forEach(doc => {
+      console.log(doc.id);
+      const usuarios = doc.data();
+      document.getElementById("leerUsuarios").innerHTML+=`
+      <div class="card" style="width: 18rem;" data-id="${doc.id}">
+          <div class="card-body">
+            <h5 class="card-title">${usuarios.name} - ${usuarios.email}</h5>
+            <p class="card-text">${usuarios.coupons}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+      </div>`;
+    })
+  },
+  error => console.error(error));
 //obtiene etiqueta del formulario
 let agregarUsuarios=document.getElementById("agregarUsuarios")
 //Funcion agrega datos a "Usuarios"
