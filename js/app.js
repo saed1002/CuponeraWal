@@ -35,7 +35,6 @@ let leerUsuarios=document.getElementById("leerUsuarios")
       })
     },
     error => console.error(error));
-/*
 leerUsuarios.innerHTML=`
 <table class="rwd-table">
   <tr>
@@ -44,12 +43,13 @@ leerUsuarios.innerHTML=`
     <th>Year</th>
     <th>Gross</th>
   </tr>
-  <tr>
-    <td>${usuarios.name}</td>
-    <td>${usuarios.coupons}</td>
+  <tr data-id="${datos.id}">
+    <td>${datos.name}</td>
+    <td>${datos.email}</td>
+    <td>${datos.coupons}</td>
    </tr>
 </table> 
-`*/
+`
 //obtiene etiqueta del formulario
 let agregarUsuarios=document.getElementById("agregarUsuarios")
 //Funcion agrega datos a "Usuarios"
