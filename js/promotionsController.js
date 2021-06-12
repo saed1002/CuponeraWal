@@ -38,7 +38,7 @@ promocion.
       console.log(doc.id);
       const promociones = doc.data();
       document.getElementById("leerPromociones").innerHTML+=`
-            <tr data-id="${doc.id}">
+            <tr class="text-center" data-id="${doc.id}">
                 <td>${promociones.name}</td>
                 <td>${promociones.description}</td>
                 <td>${promociones.discount}</td>
