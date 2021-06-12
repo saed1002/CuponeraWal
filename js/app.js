@@ -29,7 +29,6 @@ let leerUsuarios=document.getElementById("leerUsuarios")
     snapshot => {
       console.log(snapshot.size);
       snapshot.forEach(doc => {
-        console.log(doc.id);
         usuarios = doc.data();
         console.log(usuarios.name);
       })
@@ -43,7 +42,7 @@ leerUsuarios.innerHTML+=`
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
-`
+`;
 //obtiene etiqueta del formulario
 let agregarUsuarios=document.getElementById("agregarUsuarios")
 //Funcion agrega datos a "Usuarios"
