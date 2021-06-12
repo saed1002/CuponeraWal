@@ -28,14 +28,14 @@ let leerUsuarios=document.getElementById("leerUsuarios")
     onSnapshot(
     snapshot => {
       console.log(snapshot.size);
-      snapshot.forEach(document => {
-        console.log(document.id);
-        const datos = document.data();
-        console.log(datos);
+      snapshot.forEach(doc => {
+        console.log(doc.id);
+        usuarios = doc.data();
+        console.log(usuarios);
       })
     },
     error => console.error(error));
-leerUsuarios.innerHTML=`
+leerUsuarios.innerHTML+=`
 <table class="rwd-table">
   <tr>
     <th>Movie Title</th>
@@ -43,10 +43,10 @@ leerUsuarios.innerHTML=`
     <th>Year</th>
     <th>Gross</th>
   </tr>
-  <tr data-id="${datos.id}">
-    <td>${datos.name}</td>
-    <td>${datos.email}</td>
-    <td>${datos.coupons}</td>
+  <tr data-id="${doc.id}">
+    <td>${usuarios.name}</td>
+    <td>${usuarios.email}</td>
+    <td>${usuarios.coupons}</td>
    </tr>
 </table> 
 `
