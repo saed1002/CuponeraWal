@@ -31,14 +31,13 @@ let leerUsuarios=document.getElementById("leerUsuarios")
       snapshot.forEach(doc => {
         console.log(doc.id);
         usuarios = doc.data();
-        console.log(usuarios);
+        console.log(usuarios.name);
       })
     },
     error => console.error(error));
 leerUsuarios.innerHTML+=`
 <table class="rwd-table">
   <tr>
-    <th>Movie Title</th>
     <th>Genre</th>
     <th>Year</th>
     <th>Gross</th>
