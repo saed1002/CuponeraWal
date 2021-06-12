@@ -24,15 +24,19 @@
       <div class="card" style="width: 18rem;">
         <div class="card-body">
           <fieldset class="card-title">
+              <div class="col-md-4">
+              <figure><img id="avatar" alt="Avatar"></figure>
+              </div>
+              <div class="col-md-8">
             <legend>Nombre</legend>
             <output id="nombre"></output>
+            </div>
           </fieldset>
           <p class="card-text">
             <fieldset>
                 <legend>Email</legend>
                 <output id="email"><progress max="100">Cargando…</progress></output>
             </fieldset>
-            <figure><img id="avatar" alt="Avatar"></figure>
         </p>
         <button class="btn btn-alert" type="button" onclick="terminaSesión()">Terminar Sesión</button>
     </div>
