@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    
+    <title>Cuponera | Walmart</title>
+  </head>
+  <body>
+      <div class="container">
+          <div class="row">
+                <form id="agregarPromociones">
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <p class="text-center display-5">Agregar una promocion</p>
+                        </div>
+                    </div>  
+                    <div class="mb-3">
+                        <label class="form-label">Nombre de la promocion</label>
+                        <input type="text" class="form-control" name="nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descripción</label>
+                        <input type="text" class="form-control" name="descripcion">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descuento</label>
+                        <input type="number" class="form-control" name="descuento">
+                    </div>
+                    <div class='mb-3'>
+                        <label class="form-label">Fecha Inicio</label>
+                        <input type='date' class="form-control" name='fechaInicio' />
+                    </div>
+                    <div class='mb-3'>
+                        <label class="form-label">Fecha Final</label>
+                        <input type='date' class="form-control" name='fechaFinal' />
+                    </div>
+                    <div class='mb-3'>
+                        <label class="form-label">Codigo de descuento</label>
+                        <input type='text' class="form-control" name='codigo' />
+                    </div>
+                    <div class='mb-3'>
+                        <label class="form-label">Puntos para adquirir</label>
+                        <input type='text' class="form-control" name='puntos' />
+                    </div>
+                    <button class="btn btn-primary">Submit</button>
+            </form>
+            </div>
+            </div>
+            <br>
+            <div>
+                <div class="container">
+                  <div id="leerPromociones" class="row justify-content-md-center">
+                  </div>
+                </div>
+              </div> 
+              <br>
+    <footer class="text-center">Copyright &copy; 2021 Sanchez Felix Eduardo.</footer>
+    <br> 
+  </body>
+    <script src="./js/promotionsController.js"></script>
+    <script src="./js/conection.js"></script>
+</html>

@@ -36,7 +36,8 @@ usuario.
               <h5 class="card-title">${usuarios.name} - ${usuarios.mail}</h5>
               <p class="card-text">Cupones usados: ${usuarios.coupons}</p>
             </div>
-        </div>`;
+        </div>
+        <br>`;
     })
   },
   error => console.error(error));
