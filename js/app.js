@@ -36,18 +36,13 @@ let leerUsuarios=document.getElementById("leerUsuarios")
     },
     error => console.error(error));
 leerUsuarios.innerHTML+=`
-<table class="rwd-table">
-  <tr>
-    <th>Genre</th>
-    <th>Year</th>
-    <th>Gross</th>
-  </tr>
-  <tr data-id="${doc.id}">
-    <td>${usuarios.name}</td>
-    <td>${usuarios.email}</td>
-    <td>${usuarios.coupons}</td>
-   </tr>
-</table> 
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">${usuarios.name} - ${usuarios.email}</h5>
+    <p class="card-text">${usuarios.coupons}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
 `
 //obtiene etiqueta del formulario
 let agregarUsuarios=document.getElementById("agregarUsuarios")
