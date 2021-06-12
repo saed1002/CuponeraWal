@@ -48,8 +48,8 @@ promocion.
                 <td>${promociones.points}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <button type="button" class="btn btn-outline-danger btn-delete" data-id="${doc.id}">Borrar</button>
-                        <button type="button" class="btn btn-outline-warning btn-edit" data-id="${doc.id}">Editar</button>
+                        <button class="btn btn-outline-danger btn-delete" data-id="${doc.id}">Borrar</button>
+                        <button class="btn btn-outline-warning btn-edit" data-id="${doc.id}">Editar</button>
                     </div>
                 </td>
             </tr>`;
