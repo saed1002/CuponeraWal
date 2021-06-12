@@ -25,6 +25,9 @@ const addPromotion=(name,description,discount,timeEnd,timeStart,code,points)=>{
       points
   })}
 
+// borrado de datos
+const deletePromotion = (id) => promocion.doc(id).delete();
+
 //obtener usuarios
 promocion.
   orderBy("name", "asc").
@@ -35,20 +38,7 @@ promocion.
       console.log(doc.id);
       const promociones = doc.data();
       document.getElementById("leerPromociones").innerHTML+=`
-        <table class="table table-dark table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Nombre de promocion</th>
-                <th scope="col">Descripcion</th>
-                <th scope="col">Descuento</th>
-                <th scope="col">Fecha de inicio</th>
-                <th scope="col">Fecha final</th>
-                <th scope="col">Codigo</th>
-                <th scope="col">Puntos</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
+            <tr data-id="${doc.id}">
                 <th scope="row">${promociones.name}</th>
                 <td>${promociones.description}</td>
                 <td>${promociones.discount}</td>
@@ -56,13 +46,32 @@ promocion.
                 <td>${promociones.timeEnd}</td>
                 <td>${promociones.code}</td>
                 <td>${promociones.points}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <button type="button" class="btn btn-outline-danger btn-delete" data-id="${doc.id}">Borrar</button>
+                        <button type="button" class="btn btn-outline-warning btn-edit" data-id="${doc.id}">Editar</button>
+                    </div>
+                </td>
             </tr>
-            </tbody>
-        </table>
         <br>`;
     })
   },
   error => console.error(error));
+
+//funcion para borrar
+const btnsDelete = tasksContainer.querySelectorAll(".btn-delete");
+btnsDelete.forEach((btn) =>
+  btn.addEventListener("click", async (e) => {
+    console.log(e.target.dataset.id);
+    try {
+      await deletePromotion(e.target.dataset.id);
+    } catch (error) {
+      console.log(error);
+    }
+  })
+);
+
+
 //obtiene etiqueta del formulario
 let agregarPromociones=document.getElementById("agregarPromociones")
 //Funcion agrega datos a "Usuarios"
