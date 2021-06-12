@@ -52,8 +52,7 @@ promocion.
                         <button type="button" class="btn btn-outline-warning btn-edit" data-id="${doc.id}">Editar</button>
                     </div>
                 </td>
-            </tr>
-        <br>`;
+            </tr>`;
     })
   },
   error => console.error(error));
