@@ -22,17 +22,7 @@ const addUser=(phone)=>{
   })}
 
 //obtener usuarios
-    usuario.
-    orderBy("name", "asc").
-    onSnapshot(
-    snapshot => {
-      console.log(snapshot.size);
-      snapshot.forEach(doc => {
-        usuarios = doc.data();
-        console.log(usuarios.name);
-      })
-    },
-    error => console.error(error));
+usuarios = usuario.get();
 document.getElementById("leerUsuarios").innerHTML+=`
 <div class="card" style="width: 18rem;">
   <div class="card-body">
