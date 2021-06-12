@@ -34,7 +34,7 @@ let leerUsuarios=document.getElementById("leerUsuarios")
       })
     },
     error => console.error(error));
-leerUsuarios.innerHTML+=`
+leerUsuarios+=`
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">${usuarios.name} - ${usuarios.email}</h5>
