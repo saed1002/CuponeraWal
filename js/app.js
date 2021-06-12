@@ -23,14 +23,19 @@ const addUser=(phone)=>{
 
 //obtener usuarios
 let leerUsuarios=document.getElementById("leerUsuarios")
- usuario.
-orderBy("name","asc").onSnapshot(
-    snapshot=>{
-        snapshot.forEach((doc)=>{
-          const info= doc.data();
-          console.log(info)
-        })
-    })
+    usuario.
+    orderBy("name", "asc").
+    onSnapshot(
+    snapshot => {
+      console.log(snapshot.size);
+      snapshot.forEach(document => {
+        console.log(document.id);
+        const datos = document.data();
+        console.log(datos);
+      })
+    },
+    error => console.error(error));
+/*
 leerUsuarios.innerHTML=`
 <table class="rwd-table">
   <tr>
@@ -44,7 +49,7 @@ leerUsuarios.innerHTML=`
     <td>${usuarios.coupons}</td>
    </tr>
 </table> 
-`
+`*/
 //obtiene etiqueta del formulario
 let agregarUsuarios=document.getElementById("agregarUsuarios")
 //Funcion agrega datos a "Usuarios"
