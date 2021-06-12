@@ -58,7 +58,8 @@ promocion.
   error => console.error(error));
 
 //funcion para borrar
-const btnsDelete = document.querySelectorAll(".btn-delete");
+const leerPromociones=document.getElementById("leerPromociones"),
+ btnsDelete = leerPromociones.querySelectorAll(".btn-delete");
 btnsDelete.forEach((btn) =>
   btn.addEventListener("click", async (e) => {
     console.log(e.target.dataset.id);
