@@ -39,7 +39,7 @@ promocion.
       const promociones = doc.data();
       document.getElementById("leerPromociones").innerHTML+=`
             <tr data-id="${doc.id}">
-                <th scope="row">${promociones.name}</th>
+                <td>${promociones.name}</td>
                 <td>${promociones.description}</td>
                 <td>${promociones.discount}</td>
                 <td>${promociones.timeStart}</td>
@@ -59,7 +59,7 @@ promocion.
   error => console.error(error));
 
 //funcion para borrar
-const btnsDelete = tasksContainer.querySelectorAll(".btn-delete");
+const btnsDelete = document.querySelectorAll(".btn-delete");
 btnsDelete.forEach((btn) =>
   btn.addEventListener("click", async (e) => {
     console.log(e.target.dataset.id);
