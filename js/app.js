@@ -27,14 +27,8 @@ let leerUsuarios=document.getElementById("leerUsuarios")
 orderBy("name","asc").onSnapshot(
     snapshot=>{
         snapshot.forEach((doc)=>{
-            usuarios=[{
-            id:doc.id,
-            name: doc.name,
-            mail: doc.mail,
-            phone: doc.phone,
-            coupons: doc.coupons.length,
-            points: doc.points
-            }]
+          const info= doc.data();
+          console.log(info)
         })
     })
 leerUsuarios.innerHTML=`
