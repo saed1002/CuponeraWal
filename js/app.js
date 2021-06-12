@@ -22,7 +22,6 @@ const addUser=(phone)=>{
   })}
 
 //obtener usuarios
-let leerUsuarios=document.getElementById("leerUsuarios")
     usuario.
     orderBy("name", "asc").
     onSnapshot(
@@ -34,7 +33,7 @@ let leerUsuarios=document.getElementById("leerUsuarios")
       })
     },
     error => console.error(error));
-leerUsuarios+=`
+document.getElementById("leerUsuarios").innerHTML+=`
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">${usuarios.name} - ${usuarios.email}</h5>
