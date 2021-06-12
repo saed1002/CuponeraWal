@@ -22,7 +22,8 @@ const addPromotion=(name,description,discount,timeEnd,timeStart,code,points)=>{
       timeEnd,
       timeStart,
       code,
-      points
+      points,
+      coupons
   })}
 
 // borrado de datos
@@ -46,6 +47,7 @@ promocion.
                 <td>${promociones.timeEnd}</td>
                 <td>${promociones.code}</td>
                 <td>${promociones.points}</td>
+                <td>${promociones.coupons}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                         <button class="btn btn-outline-danger btn-delete" data-id="${doc.id}">Borrar</button>
@@ -84,9 +86,10 @@ agregarPromociones.addEventListener("submit",async (e)=>{
     descuento=agregarPromociones["descuento"],
     fechaInicio=agregarPromociones["fechaInicio"],
     fechaFinal=agregarPromociones["fechaFinal"],
-    codigo=agregarPromociones["codigo"]
-    puntos=agregarPromociones["puntos"]
+    codigo=agregarPromociones["codigo"],
+    puntos=agregarPromociones["puntos"],
+    cupones=agregarPromociones["cupones"]
  //llama a la funcion addUser, para agregar datos
- await addPromotion(nombre.value,descripcion.value,descuento.value, fechaFinal.value,fechaInicio.value,codigo.value,puntos.value)
+ await addPromotion(nombre.value,descripcion.value,descuento.value, fechaFinal.value,fechaInicio.value,codigo.value,puntos.value,cupones.value)
 
 })
