@@ -12,7 +12,7 @@ var promociones;
 auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.displayName})
 
 //agrega valores a la coleccion
-const addPromotion=(name,description,discount,timeEnd,timeStart,code,points)=>{
+const addPromotion=(name,description,discount,timeEnd,timeStart,code,points,coupons)=>{
   promocion.doc().set({
       nameCreator: infoUser.name,
       mail: infoUser.email,
