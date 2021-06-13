@@ -26,6 +26,7 @@ promocion.
     snapshot.forEach(doc => {
       console.log(doc.id);
       const promociones = doc.data();
+      console.log(promociones.timeEnd.split("T")[1])
       document.getElementById("promocionesList").innerHTML+=`
       <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
@@ -36,7 +37,7 @@ promocion.
                     <div class="card-body" data-id="${doc.id}">
                       <h5 class="card-title">${promociones.name}</h5>
                       <p class="card-text">${promociones.description}.</p>
-                      <p class="card-text"><small class="text-muted">Desde ${promociones.timeStart} Hasta ${promociones.timeEnd}</small></p>
+                      <p class="card-text"><small class="text-muted">Desde ${promociones.timeStart.split('T')[0]} ${promociones.timeStart.split('T')[1]} Hasta ${promociones.timeEnd.split("T")[0]} ${promociones.timeEnd.split("T")[1]}</small></p>
                     </div>
                   </div>
                 </div>
