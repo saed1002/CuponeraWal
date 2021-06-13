@@ -1,3 +1,8 @@
+//variable que guarda informacion del usuario logeado
+let infoUser={name:'',email:''}
+
+auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.displayName})
+if(infoUser.email=="406474058038.cuponera@gmail.com"){
 document.getElementById("navar").innerHTML+=`
 <div class="container-fluid">
       <a class="navbar-brand" href="./index.html">
@@ -8,3 +13,16 @@ document.getElementById("navar").innerHTML+=`
       <button class="navbar-brand btn btn btn-link" type="button" onclick="terminaSesión()">Terminar Sesión</button>
 </div>
 `;
+}
+else{
+  document.getElementById("navar").innerHTML+=`
+    <div class="container-fluid">
+          <a class="navbar-brand" href="./index.html">
+            <img src="http://1000marcas.net/wp-content/uploads/2020/02/Walmart-logo.png" alt="imagen-walmart" width="90" height="40">
+          </a>
+          <a class="navbar-brand" href="./promocionesListado.html">Promociones</a>
+          <a class="navbar-brand" href="./estadisticas">Estadisticas</a>
+          <button class="navbar-brand btn btn btn-link" type="button" onclick="terminaSesión()">Terminar Sesión</button>
+    </div>
+  `;
+}
