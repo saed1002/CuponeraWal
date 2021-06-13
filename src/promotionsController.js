@@ -38,6 +38,14 @@ promocion.
     snapshot.forEach(doc => {
       console.log(doc.id);
       const promociones = doc.data();
+      if(promociones==null){
+        document.getElementById("leerPromociones").innerHTML+=`
+            <tr class="text-center">
+                <td>No hay promociones en el Sistema</td>
+            </tr>
+      `
+      }
+      else{
       document.getElementById("leerPromociones").innerHTML+=`
             <tr class="text-center" data-id="${doc.id}">
                 <td>${promociones.name}</td>
@@ -55,6 +63,7 @@ promocion.
                     </div>
                 </td>
             </tr>`;
+      }
     })
   },
   error => console.error(error));
