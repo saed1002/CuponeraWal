@@ -3,10 +3,8 @@ auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.display
 
 var urlNav={promotions: "",estadistics: ""}
 
-navar(infoUser.email)
-
-function navar(email){
-  if(email==="406474058038.cuponera@gmail.com"){
+function navar(){
+  if(infoUser.email==="406474058038.cuponera@gmail.com"){
     urlNav.estadistics="./estadisticas.html"
     urlNav.promotions="./promociones.html"
   }
