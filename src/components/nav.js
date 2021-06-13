@@ -12,7 +12,7 @@ function navar(){
     urlNav.estadistics="./estadisticasUsuario.html"
     urlNav.promotions="./promocionesUsuario.html"
   }
-  return urlNav
+  return {urlNav,infoUser}
 }
 
 document.getElementById("navar").innerHTML+=`
