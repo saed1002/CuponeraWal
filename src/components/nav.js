@@ -1,4 +1,4 @@
-export {infoUser} from '..usersController.js'
+import {infoUser} from '..usersController.js'
 if(infoUser.email=="406474058038.cuponera@gmail.com"){
 document.getElementById("navar").innerHTML+=`
 <div class="container-fluid">
