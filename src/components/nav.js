@@ -20,9 +20,9 @@ document.getElementById("navar").innerHTML+=`
       <a class="navbar-brand" href="./index.html">
         <img src="http://1000marcas.net/wp-content/uploads/2020/02/Walmart-logo.png" alt="imagen-walmart" width="90" height="40">
       </a>
-      <a class="navbar-brand" href="${navar().urlNav.promotions}">Promociones</a>
-      <a class="navbar-brand" href="${navar().estadistics}">Estadisticas</a>
-      <button class="navbar-brand btn btn btn-link" type="button" onclick="terminaSesión()">Terminar Sesión</button>
+      <a class="navbar-brand text-light" href="${navar().urlNav.promotions}">Promociones</a>
+      <a class="navbar-brand text-light" href="${navar().estadistics}">Estadisticas</a>
+      <button class="navbar-brand btn btn btn-link text-light" type="button" onclick="terminaSesión()">Terminar Sesión</button>
 </div>
 `;
   
