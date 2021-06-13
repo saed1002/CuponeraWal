@@ -44,8 +44,8 @@ promocion.
                 <td>${promociones.name}</td>
                 <td>${promociones.description}</td>
                 <td>${promociones.discount}</td>
-                <td>${promociones.timeStart}</td>
-                <td>${promociones.timeEnd}</td>
+                <td>${promociones.timeStart[0] - promociones.timeStart[1]}</td>
+                <td>${promociones.timeEnd[0] - promociones.timeEnd[1]}</td>
                 <td>${promociones.code}</td>
                 <td>${promociones.points}</td>
                 <td>${promociones.coupons}</td>
@@ -89,8 +89,17 @@ agregarPromociones.addEventListener("submit",async (e)=>{
     fechaFinal=agregarPromociones["fechaFinal"],
     codigo=agregarPromociones["codigo"],
     puntos=agregarPromociones["puntos"],
-    cupones=agregarPromociones["cupones"]
+    cupones=agregarPromociones["cupones"];
+  fechaInicio=fechaInicio.split("T")
+  fechaFinal=fechaFinal.split("T")
  //llama a la funcion addUser, para agregar datos
  await addPromotion(nombre.value,descripcion.value,descuento.value, fechaFinal.value,fechaInicio.value,codigo.value,puntos.value,cupones.value)
-
+  var nombre=agregarPromociones["nombre"].value="",
+    descripcion=agregarPromociones["descripcion"].value="",
+    descuento=agregarPromociones["descuento"].value="",
+    fechaInicio=agregarPromociones["fechaInicio"].value="",
+    fechaFinal=agregarPromociones["fechaFinal"].value="",
+    codigo=agregarPromociones["codigo"].value="",
+    puntos=agregarPromociones["puntos"].value="",
+    cupones=agregarPromociones["cupones"].value=""
 })
