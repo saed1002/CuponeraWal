@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuponera | Walmart</title>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <nav class="navbar fixed-top navbar-light bg-dark" id="navar">
+        </nav>
+        </nav>
+    <br>
+    <br>
+    <br>
+      <div class="container">
+        <div class="row">
+            <div class="row">
+            <p class="col-md-6 fs-4 display-4 text-center align-self-center blue-200">Hola <p id="nombre"></p> </p>
+            <figure class="col-md-4 fs-4 display-4"><img id="avatar" alt="Avatar"></figure>
+        </div>
+        <p class="lead" id="email"></p>
+        <p class="lead">
+          <div class="fw-bold border-white bg-white"></div>
+        </p>
+    </div>
+    </div>
+    <div class="container">
+        <div id="leerUsuarios" class="row justify-content-md-center">
+        </div>
+      </div>
+    <br>
+    <footer class="text-center">Copyright &copy; 2021 Sanchez Felix Eduardo.</footer>
+    <br> 
+    </div>
+</body>
+<script src="./src/conection.js"></script>
+<script src="./src/usersController.js"></script>
+<script src="./src/components/nav.js"></script>
+</html>
