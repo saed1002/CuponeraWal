@@ -90,8 +90,8 @@ agregarPromociones.addEventListener("submit",async (e)=>{
     codigo=agregarPromociones["codigo"],
     puntos=agregarPromociones["puntos"],
     cupones=agregarPromociones["cupones"];
-  fechaInicio=fechaInicio.split("T")
-  fechaFinal=fechaFinal.split("T")
+  fechaInicio=fechaInicio.value.split("T")
+  fechaFinal=fechaFinal.value.split("T")
  //llama a la funcion addUser, para agregar datos
  await addPromotion(nombre.value,descripcion.value,descuento.value, fechaFinal.value,fechaInicio.value,codigo.value,puntos.value,cupones.value)
   var nombre=agregarPromociones["nombre"].value="",
