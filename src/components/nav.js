@@ -5,6 +5,6 @@ document.getElementById("navar").innerHTML+=`
       </a>
       <a class="navbar-brand" href="./promociones.html">Promociones</a>
       <a class="navbar-brand" href="./estadisticas">Estadisticas</a>
-      <button class="navbar-brand" type="button" onclick="terminaSesión()">Terminar Sesión</button>
+      <button class="navbar-brand btn btn btn-link" type="button" onclick="terminaSesión()">Terminar Sesión</button>
 </div>
 `;
