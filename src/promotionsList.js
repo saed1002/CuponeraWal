@@ -17,6 +17,10 @@ const db =firebase.firestore()
 //mandar a llamar una bd
 const promocion = db.collection("Promociones");
 
+const tiempoTranscurrido = Date.now();
+const hoy = new Date(tiempoTranscurrido);
+console.log(hoy.toISOString().split(".")[0])
+
 //obtener usuarios
 promocion.
   orderBy("name", "asc").
@@ -27,6 +31,7 @@ promocion.
       console.log(doc.id);
       const promociones = doc.data();
       console.log(promociones.timeEnd.split("T")[1])
+      if(hoy.toISOString().split(".")[0]<=promociones.timeEnd){
       document.getElementById("promocionesList").innerHTML+=`
       <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
@@ -43,6 +48,6 @@ promocion.
                 </div>
       </div>      
       `;
-    })
+    }})
   },
   error => console.error(error));
