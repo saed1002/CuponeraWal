@@ -17,7 +17,9 @@ const addUser=(phone)=>{
       name: infoUser.name,
       mail: infoUser.email,
       phone,
-      coupons: ['BIENBENIDA2021'],
+      address,
+      
+      coupons: ['MbVjhFnai8T9O5G0aqaF'],
       points: 1,
   })}
 
