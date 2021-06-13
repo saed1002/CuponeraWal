@@ -9,6 +9,14 @@
     appId: "1:406474058038:web:62a527c117af27f3b52b97",
     measurementId: "G-WEEL5GKJB2"
   };
+/*cambios en firebase rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if request.auth.uid != null;
+    }
+  }
+}*/
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
