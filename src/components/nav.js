@@ -1,5 +1,5 @@
-import {infoUser} from '../usersController.js'
-import {infoUser} from '../promotionsController.js'
+
+auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.displayName})
 if(infoUser.email=="406474058038.cuponera@gmail.com"){
 document.getElementById("navar").innerHTML+=`
 <div class="container-fluid">

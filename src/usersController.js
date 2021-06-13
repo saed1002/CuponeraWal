@@ -53,4 +53,3 @@ agregarUsuarios.addEventListener("submit",async (e)=>{
  await addUser(telefono.value)
 
 })
-export {infoUser}
