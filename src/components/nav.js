@@ -1,7 +1,4 @@
-//variable que guarda informacion del usuario logeado
-let infoUser={name:'',email:''}
-
-auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.displayName})
+export {infoUser} from '..usersController.js'
 if(infoUser.email=="406474058038.cuponera@gmail.com"){
 document.getElementById("navar").innerHTML+=`
 <div class="container-fluid">

@@ -101,3 +101,4 @@ agregarPromociones.addEventListener("submit",async (e)=>{
     puntos=agregarPromociones["puntos"].value="",
     cupones=agregarPromociones["cupones"].value=""
 })
+export {infoUser}
