@@ -1,5 +1,5 @@
-
-auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.displayName})
+var inforUser={email:""}
+auth.onAuthStateChanged(usr=>{infoUser.email=usr.email})
 
 var urlNav={promotions: "",estadistics: ""}
 
