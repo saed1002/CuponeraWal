@@ -95,8 +95,7 @@ agregarPromociones.addEventListener("submit",async (e)=>{
     cupones=agregarPromociones["cupones"],
     nombreArchivo=agregarPromociones["fileName"],
     archivo=agregarPromociones["file"].files[0];
-
-var ruta=nombre.value;
+    archivo.name=nombreArchivo.value
 //referencia de archivos
 var refArch = sg.ref('/'+nombre.value+'/'+nombreArchivo);
 //montar archivos
