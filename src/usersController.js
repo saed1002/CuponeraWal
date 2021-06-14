@@ -50,9 +50,9 @@ usuario.
   },
   error => console.error(error));
 
-  if(registro==true){
+   if(registro==true){
   //obtiene etiqueta del formulario
-  document.getElementById("agregarUsuarios").style.display = 'none'
+   document.getElementById("agregarUsuarios").style.display = 'none';
   }
   else{
     let agregarUsuarios=document.getElementById("agregarUsuarios")
