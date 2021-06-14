@@ -110,7 +110,7 @@ await refArch.put(archivo);
     codigo=agregarPromociones["codigo"].value="",
     puntos=agregarPromociones["puntos"].value="",
     cupones=agregarPromociones["cupones"].value="",
-    nombreArchivo=agregarPromociones["fileName"]="",
-    archivo=agregarPromociones["file"].files[0]="";
+    nombreArchivo=agregarPromociones["fileName"].value="",
+    archivo=agregarPromociones["file"].value="";
 
 })
