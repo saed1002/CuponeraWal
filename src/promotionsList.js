@@ -13,13 +13,14 @@
 firebase.initializeApp(firebaseConfig);
 //conexion a la bd de firebase
 const db =firebase.firestore()
-
+const sg = firebase.storage();
 //mandar a llamar una bd
 const promocion = db.collection("Promociones");
 
 const tiempoTranscurrido = Date.now();
 const hoy = new Date(tiempoTranscurrido);
 console.log(hoy.toISOString().split(".")[0])
+
 
 //obtener usuarios
 promocion.
@@ -32,11 +33,12 @@ promocion.
       const promociones = doc.data();
       console.log(promociones.timeEnd.split("T")[1])
       if(hoy.toISOString().split(".")[0]<=promociones.timeEnd){
+        var refArch = storage.ref(promociones.rute);
       document.getElementById("promocionesList").innerHTML+=`
       <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                   <div class="col-md-4">
-                    <img src="http://1000marcas.net/wp-content/uploads/2020/02/Walmart-logo.png" style="height: 120px; weight:30px" alt="...">
+                    <img src="${refArch}" style="height: 120px; weight:30px" alt="...">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body" data-id="${doc.id}">
