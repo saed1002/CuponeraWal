@@ -62,7 +62,7 @@ agregarUsuarios.addEventListener("submit",async (e)=>{
    e.preventDefault();
    //obtiene valor del campo HTML puntos
    var telefono=agregarUsuarios["telefono"],
-      direccion=agregarPromociones["direccion"];
+      direccion=agregarUsuarios["direccion"];
    //llama a la funcion addUser, para agregar datos
    await addUser(telefono.value, direccion.value)
   
