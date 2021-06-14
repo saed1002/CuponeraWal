@@ -50,14 +50,14 @@ usuario.
   },
   error => console.error(error));
 
-  if(registro===true){
+  if(registro==true){
   //obtiene etiqueta del formulario
   document.getElementById("agregarUsuarios").style.display = 'none'
   }
   else{
     let agregarUsuarios=document.getElementById("agregarUsuarios")
     //Funcion agrega datos a "Usuarios"
-agregarUsuarios.addEventListener("submit",async (e)=>{
+    agregarUsuarios.addEventListener("submit",async (e)=>{
   //evita recargo de pagina
    e.preventDefault();
    //obtiene valor del campo HTML puntos
