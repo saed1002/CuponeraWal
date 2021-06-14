@@ -98,9 +98,9 @@ agregarPromociones.addEventListener("submit",async (e)=>{
 
 var ruta=nombre.value;
 //referencia de archivos
-var refArch = sg.ref('/'+nombre.value+'/');
+var refArch = sg.ref('/'+nombre.value+'/'+nombreArchivo.value);
 //montar archivos
-await refArch.child(archivo);
+await refArch.put(archivo);
 
  //llama a la funcion addUser, para agregar datos
  await addPromotion(nombre.value,descripcion.value,descuento.value, fechaFinal.value,fechaInicio.value,codigo.value,puntos.value,cupones.value)
