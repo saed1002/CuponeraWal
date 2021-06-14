@@ -1,10 +1,24 @@
+var usuarioMail;
+auth.onAuthStateChanged(
+  /** Recibe las características del usuario o null si no ha iniciado
+   * sesión. */
+getUserLogin => {
+  if (getUserLogin && getUserLogin.email) {
+    // Usuario aceptado.
+    // @ts-ignore Muestra el email registrado en Google.
+    usuarioMail = getUserLogin.email;
+  } else {
+    // No ha iniciado sesión. Pide datos para iniciar sesión.
+    auth.signInWithRedirect(provider); 
+  }
+},
+// Función que se invoca si hay un error al verificar el usuario. //
+procesaError
+);
 
-auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.displayName})
-
-var urlNav={promotions: "",estadistics: ""}
 
 function navar(){
-  if(infoUser.email=="406474058038.cuponera@gmail.com"){
+  if(usuarioMail=="406474058038.cuponera@gmail.com"){
     urlNav.estadistics="./estadisticas.html"
     urlNav.promotions="./promociones.html"
   }
@@ -12,7 +26,7 @@ function navar(){
     urlNav.estadistics="./estadisticasUsuario.html"
     urlNav.promotions="./promocionesUsuario.html"
   }
-  return {urlNav,infoUser}
+  return {urlNav}
 }
 
 document.getElementById("navar").innerHTML+=`
