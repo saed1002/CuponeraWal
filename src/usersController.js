@@ -6,19 +6,19 @@ let infoUser={name:'',email:''}
 
 //mandar a llamar una bd
 const usuario = db.collection("Usuarios");
-var usuarios;
-
+var usuarios,
+    registro;
 //Obtener informacion del usuario logeado
 auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.displayName})
 
 //agrega valores a la coleccion
-const addUser=(phone)=>{
+const addUser=(phone, address)=>{
   usuario.doc().set({
       name: infoUser.name,
       mail: infoUser.email,
       phone,
       address,
-      
+      level:"user",
       coupons: ['MbVjhFnai8T9O5G0aqaF'],
       points: 1,
   })}
@@ -32,6 +32,12 @@ usuario.
     snapshot.forEach(doc => {
       console.log(doc.id);
       const usuarios = doc.data();
+     if(infoUser.email===usuarios.mail && usuarios.phone !==" " && usuarios.address !==" "){
+       registro = true;
+     }
+     else{
+       registro = false;
+     }
       document.getElementById("leerUsuarios").innerHTML+=`
         <div class="card bg-dark" style="width: 18rem;" data-id="${doc.id}">
             <div class="card-body">
@@ -43,15 +49,22 @@ usuario.
     })
   },
   error => console.error(error));
-//obtiene etiqueta del formulario
-let agregarUsuarios=document.getElementById("agregarUsuarios")
-//Funcion agrega datos a "Usuarios"
-agregarUsuarios.addEventListener("submit",async (e)=>{
-//evita recargo de pagina
- e.preventDefault();
- //obtiene valor del campo HTML puntos
- var telefono=agregarUsuarios["telefono"]
- //llama a la funcion addUser, para agregar datos
- await addUser(telefono.value)
 
-})
+  if(registro===true){
+  //obtiene etiqueta del formulario
+  document.getElementById("agregarUsuarios").style.display = 'none'
+  }
+  else{
+    let agregarUsuarios=document.getElementById("agregarUsuarios")
+    //Funcion agrega datos a "Usuarios"
+agregarUsuarios.addEventListener("submit",async (e)=>{
+  //evita recargo de pagina
+   e.preventDefault();
+   //obtiene valor del campo HTML puntos
+   var telefono=agregarUsuarios["telefono"],
+      direccion=agregarPromociones["direccion"];
+   //llama a la funcion addUser, para agregar datos
+   await addUser(telefono.value, direccion.value)
+  
+  })
+  }
