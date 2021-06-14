@@ -94,15 +94,14 @@ agregarPromociones.addEventListener("submit",async (e)=>{
     puntos=agregarPromociones["puntos"],
     cupones=agregarPromociones["cupones"],
     nombreArchivo=agregarPromociones["fileName"],
-    archivo=agregarPromociones["file"];
+    archivo=agregarPromociones["file"].files[0];
 
-var ruta=nombre.value+"/"+nombreArchivo.value;
+var ruta=nombre.value;
 //referencia de archivos
-var refArch = sg.ref(ruta);
+var refArch = sg.ref('/'+nombre.value+'/'+nombreArchivo.value);
 //montar archivos
-var metadatos=archivo[0].files[0]
-console.log(metadatos)
-//await refArch.put(metadatos);
+await refArch.put(archivo);
+
  //llama a la funcion addUser, para agregar datos
  await addPromotion(nombre.value,descripcion.value,descuento.value, fechaFinal.value,fechaInicio.value,codigo.value,puntos.value,cupones.value)
   var nombre=agregarPromociones["nombre"].value="",
