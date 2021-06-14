@@ -100,8 +100,9 @@ var ruta=nombre.value+"/"+nombreArchivo.value;
 //referencia de archivos
 var refArch = sg.ref(ruta);
 //montar archivos
-var metadatos=archivo.value+".png"
-await refArch.put(metadatos);
+var metadatos=archivo[0].files[0]
+console.log(metadatos)
+//await refArch.put(metadatos);
  //llama a la funcion addUser, para agregar datos
  await addPromotion(nombre.value,descripcion.value,descuento.value, fechaFinal.value,fechaInicio.value,codigo.value,puntos.value,cupones.value)
   var nombre=agregarPromociones["nombre"].value="",
