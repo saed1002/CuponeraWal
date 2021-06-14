@@ -5,8 +5,10 @@ var urlNav={promotions: "",estadistics: ""}
 
 function navar(){
   if(infoUser.email==="406474058038.cuponera@gmail.com"){
-    urlNav.estadistics="./estadisticas.html"
-    urlNav.promotions="./promociones.html"
+    urlNav={
+    estadistics:"./estadisticas.html",
+    promotions:"./promociones.html"
+    }
   }
   else{
     urlNav.estadistics="./estadisticasUsuario.html"
