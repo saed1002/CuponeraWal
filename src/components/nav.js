@@ -18,7 +18,7 @@ document.getElementById("navar").innerHTML+=`
       </a>
       <a class="navbar-brand text-light" href="${urlNav.promotions}">Promociones</a>
       <a class="navbar-brand text-light" href="${urlNav.estadistics}">Estadisticas</a>
-      <button class="navbar-brand btn btn btn-link" type="button" onclick="terminaSesión()">Terminar Sesión</button>
+      <button class="navbar-brand btn btn btn-link text-light" type="button" onclick="terminaSesión()">Terminar Sesión</button>
 </div>
 `;
   
