@@ -16,7 +16,7 @@ getUserLogin => {
 procesaError
 );
 
-
+var urlNav={estadistics:"",promotions:""}
 function navar(){
   if(usuarioMail=="406474058038.cuponera@gmail.com"){
     urlNav.estadistics="./estadisticas.html"
