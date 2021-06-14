@@ -15,7 +15,7 @@ var promociones;
 auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.displayName})
 
 //agrega valores a la coleccion
-const addPromotion=(name,description,discount,timeEnd,timeStart,code,points,coupons)=>{
+const addPromotion=(name,description,discount,timeEnd,timeStart,code,points,coupons,rute)=>{
   promocion.doc().set({
       nameCreator: infoUser.name,
       mail: infoUser.email,
@@ -27,7 +27,8 @@ const addPromotion=(name,description,discount,timeEnd,timeStart,code,points,coup
       code,
       points,
       coupons, 
-      used: coupons
+      used: coupons,
+      rute
   })}
 
 // borrado de datos
@@ -97,11 +98,12 @@ agregarPromociones.addEventListener("submit",async (e)=>{
     archivo=agregarPromociones["file"].files[0];
 //referencia de archivos
 var refArch = sg.ref(nombre.value+'/'+nombreArchivo.value);
+var rute=nombre.value+'/'+nombreArchivo.value
 //montar archivos
 await refArch.put(archivo);
 
  //llama a la funcion addUser, para agregar datos
- await addPromotion(nombre.value,descripcion.value,descuento.value, fechaFinal.value,fechaInicio.value,codigo.value,puntos.value,cupones.value)
+ await addPromotion(nombre.value,descripcion.value,descuento.value, fechaFinal.value,fechaInicio.value,codigo.value,puntos.value,cupones.value,rute)
   var nombre=agregarPromociones["nombre"].value="",
     descripcion=agregarPromociones["descripcion"].value="",
     descuento=agregarPromociones["descuento"].value="",
