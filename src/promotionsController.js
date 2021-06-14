@@ -9,7 +9,7 @@ let infoUser={name:'',email:''}
 
 //mandar a llamar una bd
 const promocion = db.collection("Promociones");
-var promociones;
+var promociones = db.collection("Promociones");
 
 //Obtener informacion del usuario logeado
 auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.displayName})
@@ -32,7 +32,7 @@ const addPromotion=(name,description,discount,timeEnd,timeStart,code,points,coup
   })}
 
 // borrado de datos
-const deletePromotion = (id) => promocion.doc(id).delete();
+const deletePromotion = (id) => promociones.doc(id).delete();
 
 //obtener usuarios
 promocion.
