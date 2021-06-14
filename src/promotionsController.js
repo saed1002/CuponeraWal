@@ -97,7 +97,7 @@ agregarPromociones.addEventListener("submit",async (e)=>{
     archivo=agregarPromociones["file"];
 
 //referencia de archivos
-var refArch = sg.ref("/"+nombreArchivo.value);
+var refArch = sg.ref(nombreArchivo.value);
 //montar archivos
 await refArch.put(archivo.value);
  //llama a la funcion addUser, para agregar datos
