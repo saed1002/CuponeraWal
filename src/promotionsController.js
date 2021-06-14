@@ -69,6 +69,7 @@ const leerPromociones=document.getElementById("leerPromociones"),
  btnsDelete = leerPromociones.querySelectorAll(".btn-delete");
 btnsDelete.forEach((btn) =>
   btn.addEventListener("click", async (e) => {
+    e.preventDefault();
     console.log(e.target.dataset.id);
     try {
       await deletePromotion(e.target.dataset.id);
