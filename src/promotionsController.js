@@ -94,7 +94,7 @@ agregarPromociones.addEventListener("submit",async (e)=>{
     puntos=agregarPromociones["puntos"],
     cupones=agregarPromociones["cupones"],
     nombreArchivo=agregarPromociones["fileName"],
-    archivo=agregarPromociones["file"].files[0];
+    archivo=agregarPromociones["file"].files[0].name;
 
 var ruta=nombre.value;
 //referencia de archivos
