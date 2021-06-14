@@ -95,9 +95,8 @@ agregarPromociones.addEventListener("submit",async (e)=>{
     cupones=agregarPromociones["cupones"],
     nombreArchivo=agregarPromociones["fileName"],
     archivo=agregarPromociones["file"].files[0];
-    archivo.name=nombreArchivo.value
 //referencia de archivos
-var refArch = sg.ref(nombreArchivo.value);
+var refArch = sg.ref(nombre.value+'/'+nombreArchivo.value);
 //montar archivos
 await refArch.put(archivo);
 
@@ -110,5 +109,8 @@ await refArch.put(archivo);
     fechaFinal=agregarPromociones["fechaFinal"].value="",
     codigo=agregarPromociones["codigo"].value="",
     puntos=agregarPromociones["puntos"].value="",
-    cupones=agregarPromociones["cupones"].value=""
+    cupones=agregarPromociones["cupones"].value="",
+    nombreArchivo=agregarPromociones["fileName"]="",
+    archivo=agregarPromociones["file"].files[0]="";
+
 })
