@@ -33,7 +33,7 @@ promocion.
       const promociones = doc.data();
       console.log(promociones.timeEnd.split("T")[1])
       if(hoy.toISOString().split(".")[0]<=promociones.timeEnd){
-        var refArch = await sg.ref(promociones.rute);
+      var refArch = sg.ref(promociones.rute);
       document.getElementById("promocionesList").innerHTML+=`
       <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
