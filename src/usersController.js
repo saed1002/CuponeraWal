@@ -35,8 +35,8 @@ usuario.
       document.getElementById("leerUsuarios").innerHTML+=`
         <div class="card bg-dark" style="width: 18rem;" data-id="${doc.id}">
             <div class="card-body">
-              <h5 class="card-title">${usuarios.name} - ${usuarios.mail}</h5>
-              <p class="card-text">Cupones usados: ${usuarios.coupons}</p>
+              <h5 class="card-title text-dark">${usuarios.name} - ${usuarios.mail}</h5>
+              <p class="card-text text-dark">Cupones usados: ${usuarios.coupons}</p>
             </div>
         </div>
         <br>`;
