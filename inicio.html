@@ -17,64 +17,43 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  </body>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
-<body>
-  <nav class="navbar fixed-top navbar-light bg-light" id="navar">
-  </nav>
-  <br>
-  <br>
-  <br>
-  <br>
-  <div class="container">
-    <div class="row">
+<body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <nav class="navbar fixed-top navbar-light bg-dark text-light" id="navar"></nav>
+    <br>
+    <br>
+    <br>
       <div class="container">
         <div class="row justify-content-md-center">
-            <p class="text-center display-4">Hola!, ¿como estas?</p>
+            <div class="row justify-content-md-center">
+            <div class="col-md-6 fs-4 display-4 text-center align-self-center blue-200">Hola <output id="nombre" style="font-size: 32px;"></output> </div>
+            <figure class="col-md-4 fs-4 display-4"><img id="avatar" alt="Avatar"></figure>
         </div>
-    </div>  
-    <div id="informacionUsuario" class="row justify-content-md-center">
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <fieldset class="card-title row justify-content-md-center">
-            <div class="col-md-6">
-            <figure><img id="avatar" alt="Avatar"></figure>
-            </div>
-            <div class="col-md-6">
-            <legend>Nombre</legend>
-            <output id="nombre"></output>
-            </div>
-          </fieldset>
-          <p class="card-text">
-            <fieldset>
-                <legend>Email</legend>
-                <output id="email"><progress max="100">Cargando…</progress></output>
-            </fieldset>
+        <p class="lead" id="email"></p>
+        <p class="lead">
+          <div class="fw-bold border-white bg-white"></div>
         </p>
-        <button class="btn btn-alert" type="button" onclick="terminaSesión()">Terminar Sesión</button>
     </div>
     </div>
-    <form id="agregarUsuarios">
-        <fieldset>
-          <legend>Telefono</legend>
-          <input name="telefono" type="tel">
-        </fieldset>
-        <button>Enviar</button>
-    </form>
-    </div>
-    <br>
-    <div>
-      <div class="container">
+    <div class="container">
         <div id="leerUsuarios" class="row justify-content-md-center">
         </div>
       </div>
-    </div> 
-    <br>
-    </div>
+    <div class="container">
+        <form id="agregarUsuarios" class="row justify-content-md-center">
+            <fieldset>
+              <legend>Telefono</legend>
+              <input name="telefono" type="tel">
+            </fieldset>
+            <button>Enviar</button>
+        </form>
     </div>
     <br>
     <footer class="text-center">Copyright &copy; 2021 Sanchez Felix Eduardo.</footer>
     <br> 
+    </div>
 </body>
 <script src="./src/conection.js"></script>
 <script src="./src/usersController.js"></script>
