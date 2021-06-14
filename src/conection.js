@@ -20,7 +20,6 @@ service cloud.firestore {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-  firebase.storage();
 
         //Conexión al sistema de autenticación de Firebase
         const auth = firebase.auth();
