@@ -1,6 +1,11 @@
 //conexion a la bd de firebase
 const db =firebase.firestore()
 
+//firebase storage
+const storage = firebase.storage();
+
+
+
 //variable que guarda informacion del usuario logeado
 let infoUser={name:'',email:''}
 
@@ -89,7 +94,14 @@ agregarPromociones.addEventListener("submit",async (e)=>{
     fechaFinal=agregarPromociones["fechaFinal"],
     codigo=agregarPromociones["codigo"],
     puntos=agregarPromociones["puntos"],
-    cupones=agregarPromociones["cupones"];
+    cupones=agregarPromociones["cupones"],
+    nombreArchivo=agregarPromociones["fileName"],
+    archivo=agregarPromociones["file"];
+
+//referencia de archivos
+const refArch = storage.ref(nombreArchivo);
+//montar archivos
+await refArch.put(archivo);
  //llama a la funcion addUser, para agregar datos
  await addPromotion(nombre.value,descripcion.value,descuento.value, fechaFinal.value,fechaInicio.value,codigo.value,puntos.value,cupones.value)
   var nombre=agregarPromociones["nombre"].value="",
