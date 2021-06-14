@@ -21,7 +21,7 @@ document.getElementById("navar").innerHTML+=`
         <img src="http://1000marcas.net/wp-content/uploads/2020/02/Walmart-logo.png" alt="imagen-walmart" width="90" height="40">
       </a>
       <a class="navbar-brand text-light" href="${navar().urlNav.promotions}">Promociones</a>
-      <a class="navbar-brand text-light" href="${navar().estadistics}">Estadisticas</a>
+      <a class="navbar-brand text-light" href="./estadisticas.html">Estadisticas</a>
       <button class="navbar-brand btn btn btn-link text-light" type="button" onclick="terminaSesión()">Terminar Sesión</button>
 </div>
 `;
