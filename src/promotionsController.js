@@ -98,7 +98,7 @@ agregarPromociones.addEventListener("submit",async (e)=>{
 
 var ruta=nombre.value;
 //referencia de archivos
-var refArch = sg.ref('/'+nombre.value+'/'+nombreArchivo.value);
+var refArch = sg.ref('/'+nombre.value+'/');
 //montar archivos
 await refArch.child(archivo);
 
