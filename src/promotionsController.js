@@ -44,8 +44,8 @@ promocion.
                 <td>${promociones.name}</td>
                 <td>${promociones.description}</td>
                 <td>${promociones.discount}</td>
-                <td>${promociones.timeStart}</td>
-                <td>${promociones.timeEnd}</td>
+                <td>${promociones.timeStart.split('T')[0]} ${promociones.timeStart.split('T')[1]}</td>
+                <td>${promociones.timeEnd.split("T")[0]} ${promociones.timeEnd.split("T")[1]}</td>
                 <td>${promociones.code}</td>
                 <td>${promociones.points}</td>
                 <td>${promociones.coupons}</td>
