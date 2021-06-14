@@ -2,9 +2,7 @@
 const db =firebase.firestore()
 
 //firebase storage
-const storage = firebase.storage();
-
-
+const sg = firebase.storage();
 
 //variable que guarda informacion del usuario logeado
 let infoUser={name:'',email:''}
@@ -99,7 +97,7 @@ agregarPromociones.addEventListener("submit",async (e)=>{
     archivo=agregarPromociones["file"];
 
 //referencia de archivos
-const refArch = storage.ref(nombreArchivo);
+var refArch = sg.ref(nombreArchivo);
 //montar archivos
 await refArch.put(archivo);
  //llama a la funcion addUser, para agregar datos
