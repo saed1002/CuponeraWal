@@ -17,7 +17,7 @@ procesaError
 );
 
 var urlNav={estadistics:"",promotions:""}
-  if(usuarioMail==="406474058038.cuponera@gmail.com"){
+  if(usuarioMail=="406474058038.cuponera@gmail.com"){
     urlNav.estadistics="./estadisticas.html"
     urlNav.promotions="./promociones.html"
   }
