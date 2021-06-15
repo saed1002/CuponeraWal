@@ -15,10 +15,8 @@ console.log(hoy.toISOString().split(".")[0])
 
 var usuarios,
     registro;
-//Obtener informacion del usuario logeado
-auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.displayName})
 
-document.cookie="name="+encodeURIComponent(infoUser.email)
+
 
 //agrega valores a la coleccion
 const addUser=(phone, address)=>{
