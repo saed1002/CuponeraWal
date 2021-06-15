@@ -21,6 +21,9 @@ service cloud.firestore {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 var infoUsuario
+        var email, 
+            nombre,
+            avatar; 
         //Conexión al sistema de autenticación de Firebase
         const auth = firebase.auth();
         //Tipo de autenticación de usuarios. En este caso es con Google.
