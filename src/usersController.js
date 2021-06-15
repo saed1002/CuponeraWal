@@ -33,11 +33,19 @@ usuario.
       console.log(doc.id);
       const usuarios = doc.data();
       console.log(usuarios.mail===infoUser.email)
-     if(usuarios.mail===infoUser.email){
-      document.getElementById("agregarUsuarios").innerHTML+=` <b>Gracias por tu registro</b>`;
-     }
-     else{
-       document.getElementById("agregarUsuarios").innerHTML+=`
+      document.getElementById("leerUsuarios").innerHTML+=`
+      <div class="card bg-dark" style="width: 18rem;" data-id="${doc.id}">
+          <div class="card-body">
+            <h5 class="card-title text-light">${usuarios.name} - ${usuarios.mail}</h5>
+            <p class="card-text text-light">Cupones obtenidos: ${usuarios.coupons}</p>
+          </div>
+      </div>
+      <br>`;
+    })
+  },
+  error => console.error(error));
+
+  document.getElementById("agregarUsuarios").innerHTML+=`
        <div class="container">
        <div class="row justify-content-md-center">
            <p class="text-center display-5"><i class="fas fa-tags"></i> Completa tu informacion</p>
@@ -52,23 +60,11 @@ usuario.
                 <label class="form-label"><i class="fas fa-audio-description"></i> Direccion</label>
                 <input type="text" class="form-control" name="direccion" required>
             </div>
+            <div class="row justify-content-md-center">
+              <button class="btn btn-primary">Enviar</button>
+              </div>
         </div>
-        <br>
-        <button class="btn btn-primary">Enviar</button>
        `;
-     }
-      document.getElementById("leerUsuarios").innerHTML+=`
-        <div class="card bg-dark" style="width: 18rem;" data-id="${doc.id}">
-            <div class="card-body">
-              <h5 class="card-title text-light">${usuarios.name} - ${usuarios.mail}</h5>
-              <p class="card-text text-light">Cupones usados: ${usuarios.coupons}</p>
-            </div>
-        </div>
-        <br>`;
-    })
-  },
-  error => console.error(error));
-
  
     //Funcion agrega datos a "Usuarios"
     agregarUsuarios.addEventListener("submit",async (e)=>{
