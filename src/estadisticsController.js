@@ -14,15 +14,26 @@ firebase.initializeApp(firebaseConfig);
 //conexion a la bd de firebase
 const db =firebase.firestore()
 const promocion = db.collection("Promociones");
+const usuario=db.collection("Usuarios");
 
 
 
-
+usuariosRegistrados=document.getElementById("usuariosRegistrados")
 //obtener usuarios
 promocion.
   orderBy("name", "asc").
   onSnapshot(
   snapshot => {
+    usuariosRegistrados.innerHTML +=`
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-tags"></i> Promociones</h5>
+          <p class="card-text text-center text-muted">${snapshot.size} promociones registradas</p>
+        </div>
+      </div>
+    </div>
+    `;
     snapshot.forEach(doc => {
     const promociones = doc.data();
     var porcentaje
@@ -45,7 +56,36 @@ promocion.
   })
 },
   error => console.error(error));
-
-
+//obtener usuarios
+usuario.
+  orderBy("name", "asc").
+  onSnapshot(
+  snapshot => {
+    console.log(snapshot.size);
+    usuariosRegistrados.innerHTML+=`
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-users"></i> Registrados</h5>
+          <p class="card-text text-center text-muted">${snapshot.size} usuarios registrados</p>
+        </div>
+      </div>
+    </div>
+    `;
+    snapshot.forEach(doc => {
+      console.log(doc.id);
+      const usuarios = doc.data();
+      /*
+      document.getElementById("leerUsuarios").innerHTML+=`
+        <div class="card bg-dark" style="width: 18rem;" data-id="${doc.id}">
+            <div class="card-body">
+              <h5 class="card-title text-light">${usuarios.name} - ${usuarios.mail}</h5>
+              <p class="card-text text-light">Cupones usados: ${usuarios.coupons}</p>
+            </div>
+        </div>
+        <br>`;*/
+    })
+  },
+  e => console.error(e));
 
   
