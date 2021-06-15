@@ -99,7 +99,7 @@ agregarPromociones.addEventListener("submit",async (e)=>{
     archivo=agregarPromociones["file"].files[0];
 //referencia de archivos
 var metadata = {
-  contentType: ['image/jpeg','image/jpg','image/png'],
+  contentType: ['image/jpeg'],
 };
 var refArch = sg.ref(nombre.value+'/'+nombreArchivo.value);
 var rute=nombre.value+'/'+nombreArchivo.value
