@@ -60,9 +60,9 @@ usuario.
                 <label class="form-label"><i class="fas fa-audio-description"></i> Direccion</label>
                 <input type="text" class="form-control" name="direccion" required>
             </div>
-            <div class="row justify-content-md-center">
-              <button class="btn btn-primary">Enviar</button>
-              </div>
+        </div>
+        <div class="row justify-content-md-center">
+        <button class="btn btn-primary">Enviar</button>
         </div>
        `;
  
