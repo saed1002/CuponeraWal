@@ -34,7 +34,6 @@ promocion.
       console.log(promociones.timeEnd.split("T")[1])
       if(hoy.toISOString().split(".")[0]<=promociones.timeEnd){
       var refArch = sg.ref(promociones.rute);
-      var imagen="";
       sg.refFromURL(refArch).getDownloadURL().then(function(url) {
         document.getElementById("promocionesList").innerHTML+=`
       <div class="card mb-3" style="max-width: 540px;">
@@ -47,6 +46,9 @@ promocion.
                       <h5 class="card-title">${promociones.name}</h5>
                       <p class="card-text">${promociones.description}.</p>
                       <p class="card-text"><small class="text-muted">Desde ${promociones.timeStart.split('T')[0]} ${promociones.timeStart.split('T')[1]} Hasta ${promociones.timeEnd.split("T")[0]} ${promociones.timeEnd.split("T")[1]}</small></p>
+                      <div class="row justify-content-md-center">
+                        <a href="./inicio.html" class="btn btn-primary">Ver la promocion</a>
+                      </div>
                     </div>
                   </div>
                 </div>
