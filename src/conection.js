@@ -34,7 +34,6 @@ var infoUsuario
           usuarioAuth => {
             if (usuarioAuth && usuarioAuth.email) {
               var urlNav={promotions: "",estadistics: ""}
-              infoUsuario=usuarioAuth.email;
               // Usuario aceptado.
               // @ts-ignore Muestra el email registrado en Google.
               email.value = usuarioAuth.email;

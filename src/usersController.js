@@ -71,27 +71,52 @@ promocion.
   },
   error => console.error(error));
 
-
-  document.getElementById("agregarUsuarios").innerHTML+=`
-       <div class="container">
-       <div class="row justify-content-md-center">
-           <p class="text-center display-5"><i class="fas fa-tags"></i> Completa tu informacion</p>
-       </div>
-        </div>  
-        <div class="row">
-            <div class="col-md-6">
-                <label class="form-label"><i class="fas fa-tag"></i> Telefono</label>
-                <input type="tel" class="form-control" name="telefono" required>
-            </div>
-            <div class="col-md-6">
-                <label class="form-label"><i class="fas fa-audio-description"></i> Direccion</label>
-                <input type="text" class="form-control" name="direccion" required>
-            </div>
-        </div>
+  usuario.
+  orderBy("name", "asc").
+  onSnapshot(
+  snapshot => {
+    console.log(snapshot.size);
+    snapshot.forEach(doc => {
+      console.log(doc.id);
+      const usuarioss = doc.data();
+      if(usuarios.mail ===email.value){
+        document.getElementById("agregarUsuarios").innerHTML+=`
+        <div class="container">
         <div class="row justify-content-md-center">
-        <button class="btn btn-primary">Enviar</button>
+            <p class="text-center display-5"><i class="fas fa-tags"></i> Completa tu informacion</p>
         </div>
-       `;
+         </div>  
+         <div class="row">
+             <div class="col-md-6">
+                 <label class="form-label"><i class="fas fa-tag"></i> Telefono</label>
+                 <input type="tel" class="form-control" name="telefono" required>
+             </div>
+             <div class="col-md-6">
+                 <label class="form-label"><i class="fas fa-audio-description"></i> Direccion</label>
+                 <input type="text" class="form-control" name="direccion" required>
+             </div>
+         </div>
+         <div class="row justify-content-md-center">
+         <button class="btn btn-primary">Enviar</button>
+         </div>
+        `;
+      }
+    else{
+      document.getElementById("agregarUsuarios").innerHTML+=`
+      <div class="container">
+      <div class="row justify-content-md-center">
+          <p class="text-center"><i class="fas fa-tags"></i> Gracias por tu registro</p>
+      </div>
+      </div>`;
+    }}).catch(function(error) {
+        console.log(error)
+      });
+      
+    }})
+  },
+  error => console.error(error));
+
+  
  
     //Funcion agrega datos a "Usuarios"
     agregarUsuarios.addEventListener("submit",async (e)=>{
