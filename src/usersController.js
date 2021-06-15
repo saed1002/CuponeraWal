@@ -33,7 +33,7 @@ usuario.
       console.log(doc.id);
       const usuarios = doc.data();
      if(infoUser.email===usuarios.mail && usuarios.phone !==" " && usuarios.address !==" "){
-       <b>Gracias por tu registro</b>
+      document.getElementById("agregarUsuarios").innerHTML+=` <b>Gracias por tu registro</b>`;
      }
      else{
        document.getElementById("agregarUsuarios").innerHTML+=`

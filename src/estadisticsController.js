@@ -25,13 +25,22 @@ promocion.
   snapshot => {
     snapshot.forEach(doc => {
     const promociones = doc.data();
-    console.log((parseInt(promociones.used)*100)/parseInt(promociones.coupons))
+    var porcentaje
+    if(((parseInt(promociones.used)*100)/parseInt(promociones.coupons)).toFixed()<50){
+      porcentaje="bg-success"
+    }
+    if(((parseInt(promociones.used)*100)/parseInt(promociones.coupons)).toFixed()>50){
+      porcentaje="bg-danger"
+    }
     document.getElementById("myfirstchart").innerHTML+=`
-    <div class="card-title">${promociones.name}</div>
-    <div class="progress">
-      <div class="card-list progress-bar" role="progressbar" style="width:${x=(parseInt(promociones.used)*100)/parseInt(promociones.coupons)}%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${x=(parseInt(promociones.coupons)*100)/parseInt(promociones.used)}%</div>
+    <div class="md">
+          <div class="card-title">${promociones.name}</div>
+          <div class="progress">
+            <div class="card-list progress-bar progress-bar-striped progress-bar-animated ${porcentaje}" role="progressbar" style="width:${((parseInt(promociones.used)*100)/parseInt(promociones.coupons)).toFixed()}%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${((parseInt(promociones.used)*100)/parseInt(promociones.coupons)).toFixed()}%</div>
+          </div>
+          <div class="card-list text-center">
+          <p class="text-muted"> Quedan ${promociones.used} cupones de  ${promociones.coupons}</p>
     </div>
-    <br>
     `
   })
 },
