@@ -1,4 +1,4 @@
-var inforUser={email:""}
+/*var inforUser={email:""}
 var urlNav={promotions: "",estadistics: ""}
 auth.onAuthStateChanged(usr=>{
   if(usr.email==="406474058038.cuponera@gmail.com"){
@@ -21,4 +21,4 @@ document.getElementById("navar").innerHTML+=`
       <button class="navbar-brand btn btn btn-link text-light" type="button" onclick="terminaSesión()">Terminar Sesión</button>
 </div>
 `;
-  
+*/  
