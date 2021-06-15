@@ -33,6 +33,7 @@ var infoUsuario
            * sesión. */
           usuarioAuth => {
             if (usuarioAuth && usuarioAuth.email) {
+              var urlNav={promotions: "",estadistics: ""}
               infoUsuario=usuarioAuth.email;
               // Usuario aceptado.
               // @ts-ignore Muestra el email registrado en Google.
@@ -41,7 +42,7 @@ var infoUsuario
               nombre.value = usuarioAuth.displayName;
               // @ts-ignore Muestra el avatar registrado en Google.
               avatar.src = usuarioAuth.photoURL;
-              if(usr.email==="406474058038.cuponera@gmail.com"){
+              if(usuarioAuth.email==="406474058038.cuponera@gmail.com"){
                 urlNav.estadistics="./estadisticas.html"
                 urlNav.promotions="./promociones.html"
               }
