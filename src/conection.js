@@ -20,7 +20,7 @@ service cloud.firestore {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-var infoUsuario
+var infoUser
         //Conexión al sistema de autenticación de Firebase
         const auth = firebase.auth();
         //Tipo de autenticación de usuarios. En este caso es con Google.
@@ -33,7 +33,7 @@ var infoUsuario
            * sesión. */
           usuarioAuth => {
             if (usuarioAuth && usuarioAuth.email) {
-              
+              infoUser=usuarioAuth.email;
               // Usuario aceptado.
               // @ts-ignore Muestra el email registrado en Google.
               email.value = usuarioAuth.email;
@@ -65,4 +65,4 @@ var infoUsuario
           alert(e.message);
         }
 
-        document.cookie="email="+infoUser.email
+        document.cookie="email="+infoUser
