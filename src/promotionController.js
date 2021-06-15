@@ -1,5 +1,3 @@
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 //conexion a la bd de firebase
 const db =firebase.firestore()
 const sg = firebase.storage();
