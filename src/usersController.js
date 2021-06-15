@@ -33,6 +33,7 @@ usuario.
       console.log(doc.id);
       const usuarios = doc.data();
      if(usuarios.mail===infoUser.email){
+       console.log(usuarios.mail===infoUser.email)
       document.getElementById("agregarUsuarios").innerHTML+=` <b>Gracias por tu registro</b>`;
      }
      else{
