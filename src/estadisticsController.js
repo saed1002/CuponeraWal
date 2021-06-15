@@ -88,4 +88,25 @@ usuario.
   },
   e => console.error(e));
 
-  
+  /*
+  usuario.
+  orderBy("name", "asc").
+  onSnapshot(
+  snapshot => {
+    console.log(snapshot.size);
+    snapshot.forEach(doc => {
+      console.log(doc.id);
+      const usuarios = doc.data();
+      console.log(usuarios.mail===infoUser.email)
+      document.getElementById("leerUsuarios").innerHTML+=`
+      <div class="card bg-dark" style="width: 18rem;" data-id="${doc.id}">
+          <div class="card-body">
+            <h5 class="card-title text-light">${usuarios.name} - ${usuarios.mail}</h5>
+            <p class="card-text text-light">Cupones obtenidos: ${usuarios.coupons}</p>
+          </div>
+      </div>
+      <br>`;
+    })
+  },
+  error => console.error(error));
+  */
