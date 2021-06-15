@@ -78,8 +78,8 @@ promocion.
     console.log(snapshot.size);
     snapshot.forEach(doc => {
       console.log(doc.id);
-      const usuarioss = doc.data();
-      if(usuarios.mail ===email.value){
+      const usuarios = doc.data();
+      if(usuarios.mail === email.value){
         document.getElementById("agregarUsuarios").innerHTML+=`
         <div class="container">
         <div class="row justify-content-md-center">
