@@ -32,7 +32,7 @@ usuario.
     snapshot.forEach(doc => {
       console.log(doc.id);
       const usuarios = doc.data();
-     if(infoUser.email==usuarios.mail){
+     if(infoUser.email!=usuarios.mail){
       document.getElementById("agregarUsuarios").innerHTML+=` <b>Gracias por tu registro</b>`;
      }
      else{
