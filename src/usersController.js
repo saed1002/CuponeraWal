@@ -68,8 +68,7 @@ usuario.
   },
   error => console.error(error));
 
-  else{
-    let agregarUsuarios=document.getElementById("agregarUsuarios")
+ 
     //Funcion agrega datos a "Usuarios"
     agregarUsuarios.addEventListener("submit",async (e)=>{
   //evita recargo de pagina
