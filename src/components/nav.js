@@ -14,7 +14,7 @@ auth.onAuthStateChanged(
               <button class="navbar-brand btn btn btn-link text-light" type="button" onclick="terminaSesión()">Terminar Sesión</button>
         </div>
         `;}
-        else{
+        /*
           document.getElementById("navar").innerHTML+=`
         <div class="container-fluid">
               <a class="navbar-brand" href="./index.html">
@@ -24,8 +24,7 @@ auth.onAuthStateChanged(
               <a class="navbar-brand text-light" href="./myWallet.html">My wallet</a>
               <button class="navbar-brand btn btn btn-link text-light" type="button" onclick="terminaSesión()">Terminar Sesión</button>
         </div>
-        `
-        }
+        `*/
     } else {
       // No ha iniciado sesión. Pide datos para iniciar sesión.
       auth.signInWithRedirect(provider); 
