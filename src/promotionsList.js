@@ -34,11 +34,13 @@ promocion.
       console.log(promociones.timeEnd.split("T")[1])
       if(hoy.toISOString().split(".")[0]<=promociones.timeEnd){
       var refArch = sg.ref(promociones.rute);
-      document.getElementById("promocionesList").innerHTML+=`
+      var imagen="";
+      sg.refFromURL(refArch).getDownloadURL().then(function(url) {
+        document.getElementById("promocionesList").innerHTML+=`
       <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                   <div class="col-md-4">
-                    <img src="${sg.refFromURL(refArch)}" style="height: 120px; weight:30px" alt="...">
+                  <img src="${url}" style="height: 120px; weight:30px" alt="...">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body" data-id="${doc.id}">
@@ -50,6 +52,10 @@ promocion.
                 </div>
       </div>      
       `;
+      }).catch(function(error) {
+        console.log(error)
+      });
+      
     }})
   },
   error => console.error(error));
