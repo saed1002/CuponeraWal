@@ -38,7 +38,7 @@ promocion.
       <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                   <div class="col-md-4">
-                    <img src="${sg.ref(refArch)}" style="height: 120px; weight:30px" alt="...">
+                    <img src="${sg.child(refArch)}" style="height: 120px; weight:30px" alt="...">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body" data-id="${doc.id}">
