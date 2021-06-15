@@ -15,29 +15,9 @@ firebase.initializeApp(firebaseConfig);
 const db =firebase.firestore()
 const promocion = db.collection("Promociones");
 
-var couponsPromotion=[],
-    namesPromotion=[];
-var dat=[]
 
-var morrisBar= new Morris.Bar({
-    // ID of the element in which to draw the chart.
-    element: 'myfirstchart',
-    // Chart data records -- each entry in this array corresponds to a point on
-    // the chart.
-    data: dat,
-    // The name of the data record attribute that contains x-values.
-    xkey: 'nombre',
-    // A list of names of data record attributes that contain y-values.
-    ykeys: 'cupones',
-    // Labels for the ykeys -- will be displayed when you hover over the
-    // chart.
-    labels: ['nombre', 'cupones'],
-    barRatio: 0.4,
-    barColors: ['#1F2547', '#1F2547', '#1F2547', '#1F2547'],
-    xLabelAngle: 35,
-    hideHover: 'auto',
-    resize: true
-  });
+
+
 //obtener usuarios
 promocion.
   orderBy("name", "asc").
@@ -45,13 +25,15 @@ promocion.
   snapshot => {
     snapshot.forEach(doc => {
     const promociones = doc.data();
-    console.log(promociones.name)
-    couponsPromotion.push(parseInt(promociones.coupons))
-    namesPromotion.push(promociones.name)
+    console.log((parseInt(promociones.used)*100)/parseInt(promociones.coupons))
+    document.getElementById("myfirstchart").innerHTML+=`
+    <div class="card-title">${promociones.name}</div>
+    <div class="progress">
+      <div class="card-list progress-bar" role="progressbar" style="width:${x=(parseInt(promociones.used)*100)/parseInt(promociones.coupons)}%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${x=(parseInt(promociones.coupons)*100)/parseInt(promociones.used)}%</div>
+    </div>
+    <br>
+    `
   })
-  for(var w=0; w < namesPromotion.length; w++){
-    dat.push({nombre:namesPromotion[w],cupones:couponsPromotion[w]})   
-    }
 },
   error => console.error(error));
 
