@@ -80,4 +80,3 @@ usuario.
    await addUser(telefono.value, direccion.value)
   
   })
-  }
