@@ -52,7 +52,7 @@ var infoUsuario
               document.getElementById("navar").innerHTML+=`
               <div class="container-fluid">
                     <a class="navbar-brand" href="./index.html">
-                      <img src="http://1000marcas.net/wp-content/uploads/2020/02/Walmart-logo.png" alt="imagen-walmart" width="90" height="40">
+                      <img src="https://firebasestorage.googleapis.com/v0/b/cuponerawal.appspot.com/o/LOGO5.png?alt=media&token=91ae9512-e718-41f5-a433-02b739aaab11" alt="imagen-walmart" width="90" height="40">
                     </a>
                     <a class="navbar-brand text-light" href="${urlNav.promotions}">Promociones</a>
                     <a class="navbar-brand text-light" href="${urlNav.estadistics}">Estadisticas</a>
