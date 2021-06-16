@@ -32,7 +32,7 @@ promocion.doc("kCVSOcCJbGxMWk0oJH2N").onSnapshot(
                 <p class="card-text">Codigo: ${datos.code}</p>
                 </div>  
                 </div>
-                <p class="card-text">El presente contrato describe los términos y condiciones aplicables al uso del contenido, productos y/o servicios del sitio web WAL-CUPONERA del cual es titular WAL-CUPONERA. Para hacer uso del contenido, productos y/o servicios del sitio web el usuario deberá sujetarse a los presentes términos y condiciones.</p>
+                <p class="card-text">El presente contrato describe los términos y condiciones aplicables al uso del contenido, productos y/o servicios del sitio web CUPONERA ProMaskot del cual es titular CUPONERA ProMaskot. Para hacer uso del contenido, productos y/o servicios del sitio web el usuario deberá sujetarse a los presentes términos y condiciones.</p>
                 <p class="card-text"><p class="text-primary fw-bolder display-6">Hasta ${datos.timeStart.split('T')[0]}</p></p>
             </div>
         </div>
