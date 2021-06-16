@@ -10,7 +10,7 @@ console.log(hoy.toISOString().split("T")[0])
 
 
 
-promocion.doc("mN8UlaQEpZVtbnjrvZWn").onSnapshot(
+promocion.doc("kCVSOcCJbGxMWk0oJH2N").onSnapshot(
     promociones => {
       if (promociones.exists) {
         console.log(promociones.id);
