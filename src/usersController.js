@@ -12,9 +12,9 @@ const hoy = new Date(tiempoTranscurrido);
 
 var user = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(async snapshot => {
-    checkRegister()
-    function checkRegister(){
-    if (await snapshot.size >= 1) {
+    checkRegister(snapshot.size)
+    function checkRegister(sizeSnap){
+    if (await sizeSnap >= 1) {
       console.log(snapshot.size)
       document.getElementById("agregarUsuarios").innerHTML += `
             <div class="container">
@@ -70,7 +70,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
         addUser(telefono.value, direccion.value)
         telefono = agregarUsuarios["telefono"].value = "",
           direccion = agregarUsuarios["direccion"].value = "";
-          checkRegister()
+          checkRegister(snapshot.size)
       })
   }, error => console.error(error))
 });
