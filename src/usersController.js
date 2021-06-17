@@ -71,7 +71,41 @@ promocion.
   },
   error => console.error(error));
 
-  usuario.
+  
+usuario.where("mail","==",email.value).onSnapshot(snapshot=>{
+if(snapshot.size > 1){
+  document.getElementById("agregarUsuarios").innerHTML+=`
+      <div class="container">
+      <div class="row justify-content-md-center">
+          <p class="text-center"><i class="fas fa-tags"></i> Gracias por tu registro</p>
+      </div>
+      </div>`; 
+}
+else{
+  document.getElementById("agregarUsuarios").innerHTML+=`
+  <div class="container">
+  <div class="row justify-content-md-center">
+      <p class="text-center display-5"><i class="fas fa-tags"></i> Completa tu informacion</p>
+  </div>
+   </div>  
+   <div class="row">
+       <div class="col-md-6">
+           <label class="form-label"><i class="fas fa-tag"></i> Telefono</label>
+           <input type="tel" class="form-control" name="telefono" required>
+       </div>
+       <div class="col-md-6">
+           <label class="form-label"><i class="fas fa-audio-description"></i> Direccion</label>
+           <input type="text" class="form-control" name="direccion" required>
+       </div>
+   </div>
+   <div class="row justify-content-md-center">
+   <button class="btn btn-primary">Enviar</button>
+   </div>
+  `;
+}},error => console.error(error))
+  
+/*
+usuario.
   orderBy("name", "asc").
   onSnapshot(
   snapshot => {
@@ -113,8 +147,7 @@ promocion.
   }
   },
   error => console.error(error));
-
-  
+  */
  
     //Funcion agrega datos a "Usuarios"
     agregarUsuarios.addEventListener("submit",async (e)=>{
