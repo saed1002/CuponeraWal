@@ -20,7 +20,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
       document.getElementById("agregarUsuarios").innerHTML += `
             <div class="container">
             <div class="row justify-content-md-center">
-                <p class="text-center"><i class="fas fa-tags"></i> Gracias por tu registro</p>
+                <p class="text-center diplay-4"> Gracias por tu registro</p>
             </div>
             </div>`;
     }
