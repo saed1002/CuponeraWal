@@ -74,6 +74,7 @@ promocion.
 
 usuario.where("mail","==",email.value).onSnapshot(snapshot=>{
 if(snapshot.size >= 1){
+  console.log(snapshot.size)
   document.getElementById("agregarUsuarios").innerHTML+=`
       <div class="container">
       <div class="row justify-content-md-center">
