@@ -5,7 +5,6 @@ const promocion = db.collection("Promociones");
 const usuario=db.collection("Usuarios");
 
 
-if(document.getElementById("email").value==="406474058038.cuponera@gmail.com"){
 usuariosRegistrados=document.getElementById("usuariosRegistrados")
 //obtener usuarios
 promocion.
@@ -98,14 +97,3 @@ usuario.
   },
   error => console.error(error));
   */
-}
-else{
-  document.getElementById("usuariosRegistrados").innerHTML +=`
-   <div class="col-md-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><i class="fas fa-tags"></i>404 pagina No encontrada</h5>
-        </div>
-      </div>
-    </div>`;
-}
