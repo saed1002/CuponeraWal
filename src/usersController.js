@@ -14,7 +14,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(async snapshot => {
     checkRegister(snapshot.size)
     function checkRegister(sizeSnap){
-    if (await sizeSnap >= 1) {
+    if(await sizeSnap >= 1){
       console.log(snapshot.size)
       document.getElementById("agregarUsuarios").innerHTML += `
             <div class="container">
