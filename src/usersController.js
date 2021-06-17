@@ -12,8 +12,6 @@ const hoy = new Date(tiempoTranscurrido);
 
 var user = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(async snapshot => {
-    checkRegister(snapshot.size)
-    function checkRegister(sizeSnap){
     if(await sizeSnap >= 1){
       console.log(snapshot.size)
       document.getElementById("agregarUsuarios").innerHTML += `
@@ -45,7 +43,6 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
          </div>
         `;
     
-    }
     }
       //agrega valores a la coleccion
       const addUser = (phone, address) => {
