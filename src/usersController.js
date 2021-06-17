@@ -1,5 +1,5 @@
 //conexion a la bd de firebase
-const db =firebase.firestore()
+const db = firebase.firestore()
 const sg = firebase.storage();
 
 
@@ -10,19 +10,19 @@ const promocion = db.collection("Promociones");
 const tiempoTranscurrido = Date.now();
 const hoy = new Date(tiempoTranscurrido);
 
-  var user = firebase.auth().onAuthStateChanged(userAuth=>{
-  usuario.where("mail","==",userAuth.email).onSnapshot(async snapshot=>{
-      if( await snapshot.size >= 1){
-        console.log(snapshot.size)
-        document.getElementById("agregarUsuarios").innerHTML+=`
+var user = firebase.auth().onAuthStateChanged(userAuth => {
+  usuario.where("mail", "==", userAuth.email).onSnapshot(async snapshot => {
+    if (await snapshot.size >= 1) {
+      console.log(snapshot.size)
+      document.getElementById("agregarUsuarios").innerHTML += `
             <div class="container">
             <div class="row justify-content-md-center">
                 <p class="text-center"><i class="fas fa-tags"></i> Gracias por tu registro</p>
             </div>
-            </div>`; 
-      }
-      else{
-      var agregarUsuarios= document.getElementById("agregarUsuarios").innerHTML+=`
+            </div>`;
+    }
+    else {
+      var agregarUsuarios = document.getElementById("agregarUsuarios").innerHTML += `
         <div class="container">
         <div class="row justify-content-md-center">
             <p class="text-center display-5"><i class="fas fa-tags"></i> Completa tu informacion</p>
@@ -42,48 +42,51 @@ const hoy = new Date(tiempoTranscurrido);
          <button class="btn btn-primary">Enviar</button>
          </div>
         `;
-          //Funcion agrega datos a "Usuarios"
-        agregarUsuarios.addEventListener("submit", (e)=>{
-          //evita recargo de pagina
-          e.preventDefault();
-          //obtiene valor del campo HTML puntos
-          var telefono=agregarUsuarios["telefono"],
-              direccion=agregarUsuarios["direccion"];
-          //llama a la funcion addUser, para agregar datos
-          await addUser(telefono.value, direccion.value)
-          telefono=agregarUsuarios["telefono"].value="",
-          direccion=agregarUsuarios["direccion"].value="";
-          })
+      //agrega valores a la coleccion
+      const addUser = async (phone, address) => {
+        usuario.doc().set({
+          name: userAuth.displayName,
+          mail: userAuth.email,
+          phone,
+          address,
+          level: "user",
+          coupons: ['MbVjhFnai8T9O5G0aqaF'],
+          points: 1,
+        })
+      }
+      //Funcion agrega datos a "Usuarios"
+      agregarUsuarios.addEventListener("submit", (e) => {
+        //evita recargo de pagina
+        e.preventDefault();
+        //obtiene valor del campo HTML puntos
+        var telefono = agregarUsuarios["telefono"],
+          direccion = agregarUsuarios["direccion"];
+        //llama a la funcion addUser, para agregar datos
+        await addUser(telefono.value, direccion.value)
+        telefono = agregarUsuarios["telefono"].value = "",
+          direccion = agregarUsuarios["direccion"].value = "";
+      })
 
-                    //agrega valores a la coleccion
-          const addUser= async (phone, address)=>{
-            usuario.doc().set({
-                name: userAuth.displayName,
-                mail: userAuth.email,
-                phone,
-                address,
-                level:"user",
-                coupons: ['MbVjhFnai8T9O5G0aqaF'],
-                points: 1,
-            })}
 
-      }},error => console.error(error))
-  });
+
+    }
+  }, error => console.error(error))
+});
 //obtener promociones
 //obtener usuarios
 promocion.
   orderBy("name", "asc").
   onSnapshot(
-  snapshot => {
-    console.log(snapshot.size);
-    snapshot.forEach(doc => {
-      console.log(doc.id);
-      const promociones = doc.data();
-      console.log(promociones.timeEnd.split("T")[1])
-      if(hoy.toISOString().split(".")[0]<=promociones.timeEnd){
-      var refArch = sg.ref(promociones.rute);
-      sg.refFromURL(refArch).getDownloadURL().then(function(url) {
-        document.getElementById("promocionesList").innerHTML+=`
+    snapshot => {
+      console.log(snapshot.size);
+      snapshot.forEach(doc => {
+        console.log(doc.id);
+        const promociones = doc.data();
+        console.log(promociones.timeEnd.split("T")[1])
+        if (hoy.toISOString().split(".")[0] <= promociones.timeEnd) {
+          var refArch = sg.ref(promociones.rute);
+          sg.refFromURL(refArch).getDownloadURL().then(function (url) {
+            document.getElementById("promocionesList").innerHTML += `
       <div class="card mb-3 bg-secondary" style="max-width: 540px;">
                 <div class="row g-0">
                   <div class="col-md-4">
@@ -102,16 +105,17 @@ promocion.
                 </div>
       </div>      
       `;
-      }).catch(function(error) {
-        console.log(error)
-      });
-      
-    }})
-  },
-  error => console.error(error));
-var contarUsuarios=usuario.where("mail","==",email.value).get();
+          }).catch(function (error) {
+            console.log(error)
+          });
+
+        }
+      })
+    },
+    error => console.error(error));
+var contarUsuarios = usuario.where("mail", "==", email.value).get();
 
 
 
-  
+
 
