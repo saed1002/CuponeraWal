@@ -43,7 +43,7 @@ const hoy = new Date(tiempoTranscurrido);
          </div>
         `;
           //Funcion agrega datos a "Usuarios"
-        agregarUsuarios.addEventListener("submit",async (e)=>{
+        agregarUsuarios.addEventListener("submit", (e)=>{
           //evita recargo de pagina
           e.preventDefault();
           //obtiene valor del campo HTML puntos
