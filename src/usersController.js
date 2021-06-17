@@ -12,6 +12,8 @@ const hoy = new Date(tiempoTranscurrido);
 
 var user = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(async snapshot => {
+    checkRegister()
+    function checkRegister(){
     if (await snapshot.size >= 1) {
       console.log(snapshot.size)
       document.getElementById("agregarUsuarios").innerHTML += `
@@ -42,6 +44,9 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
          <button class="btn btn-primary">Enviar</button>
          </div>
         `;
+    
+    }
+    }
       //agrega valores a la coleccion
       const addUser = (phone, address) => {
         usuario.doc().set({
@@ -65,11 +70,8 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
         addUser(telefono.value, direccion.value)
         telefono = agregarUsuarios["telefono"].value = "",
           direccion = agregarUsuarios["direccion"].value = "";
+          checkRegister()
       })
-
-
-
-    }
   }, error => console.error(error))
 });
 //obtener promociones
