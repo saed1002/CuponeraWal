@@ -68,7 +68,6 @@ promocion.
   function deletingPromotion(){
     idSend=document.getElementById("btn-delete").getAttribute("data-id")
     promociones.doc(idSend).delete();
-    location.reload
   }
   console.log(idSend);
   
