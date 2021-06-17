@@ -70,7 +70,8 @@ promocion.
     }})
   },
   error => console.error(error));
-
+var contarUsuarios=usuario.where("mail","==",email.value).get();
+console.log(contarUsuarios)
 
 usuario.where("mail","==",email.value).onSnapshot(snapshot=>{
 if(snapshot.size >= 1){
