@@ -1,8 +1,8 @@
 //conexion a la bd de firebase
 const db = firebase.firestore()
 const sg = firebase.storage();
-var agregarUsuarios = document.getElementById("agregarUsuarios")
 
+var agregarUsuarios = document.getElementById("agregarUsuarios")
 //mandar a llamar una bd
 const usuario = db.collection("Usuarios");
 const promocion = db.collection("Promociones");
@@ -22,7 +22,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
             </div>`;
     }
     else {
-      document.getElementById("agregarUsuarios").innerHTML += `
+     document.getElementById("agregarUsuarios").innerHTML += `
         <div class="container">
         <div class="row justify-content-md-center">
             <p class="text-center display-5"><i class="fas fa-tags"></i> Completa tu informacion</p>
@@ -55,7 +55,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
         })
       }
       //Funcion agrega datos a "Usuarios"
-      addUsers("submit", (e) => {
+      agregarUsuarios.addEventListener("submit", (e) => {
         //evita recargo de pagina
         e.preventDefault();
         //obtiene valor del campo HTML puntos
