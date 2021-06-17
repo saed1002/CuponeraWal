@@ -43,7 +43,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
          </div>
         `;
       //agrega valores a la coleccion
-      const addUser = async (phone, address) => {
+      const addUser = (phone, address) => {
         usuario.doc().set({
           name: userAuth.displayName,
           mail: userAuth.email,
@@ -62,7 +62,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
         var telefono = agregarUsuarios["telefono"],
           direccion = agregarUsuarios["direccion"];
         //llama a la funcion addUser, para agregar datos
-        await addUser(telefono.value, direccion.value)
+        addUser(telefono.value, direccion.value)
         telefono = agregarUsuarios["telefono"].value = "",
           direccion = agregarUsuarios["direccion"].value = "";
       })
