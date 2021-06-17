@@ -1,25 +1,24 @@
+import {idSend, idPromotion} from "./usersController.js"
 //conexion a la bd de firebase
-const db =firebase.firestore()
+const db = firebase.firestore()
 const sg = firebase.storage();
 //mandar a llamar una bd
 const promocion = db.collection("Promociones");
 
 const tiempoTranscurrido = Date.now();
 const hoy = new Date(tiempoTranscurrido);
-console.log(hoy.toISOString().split("T")[0])
 
 
 
-promocion.doc("kCVSOcCJbGxMWk0oJH2N").onSnapshot(
+
+  promocion.doc(idSend).onSnapshot(
     promociones => {
       if (promociones.exists) {
-        console.log(promociones.id);
         const datos = promociones.data();
-        console.log(datos);
         var refArch = sg.ref(datos.rute);
-        if(hoy.toISOString().split(".")[0]<=datos.timeEnd){
-        sg.refFromURL(refArch).getDownloadURL().then(function(url) {
-            document.getElementById("promocionInfo").innerHTML +=`
+        if (hoy.toISOString().split(".")[0] <= datos.timeEnd) {
+          sg.refFromURL(refArch).getDownloadURL().then(function (url) {
+            document.getElementById("promocionInfo").innerHTML += `
         <div class="card mb-3 bg-dark">
                 <img src="${url}" class="card-img-top" alt="...">
                     <br><br>
@@ -40,12 +39,11 @@ promocion.doc("kCVSOcCJbGxMWk0oJH2N").onSnapshot(
             // Get the download URL for 'images/stars.jpg'
             // This can be inserted into an <img> tag
             // This can also be downloaded directly
-          }).catch(function(error) {
+          }).catch(function (error) {
             // Handle any errors
           });
-      } else {
-        console.log("No encontrado.");
-        document.getElementById("promocionInfo").innerHTML +=`
+        } else {
+          document.getElementById("promocionInfo").innerHTML += `
         <div class="card mb-3 bg-dark">
                 <img src="https://1000marcas.net/wp-content/uploads/2020/02/Walmart-logo.png" class="card-img-top" alt="...">
                     <br><br>
@@ -55,7 +53,7 @@ promocion.doc("kCVSOcCJbGxMWk0oJH2N").onSnapshot(
             </div>
         </div>
         `
-      }}
+        }
+      }
     },
     error => console.error(error));
-

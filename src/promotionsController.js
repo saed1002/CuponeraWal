@@ -55,7 +55,7 @@ promocion.
                 <td>${promociones.coupons}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <button class="btn btn-outline-danger btn-delete" data-id="${doc.id}">Borrar</button>
+                        <button id="btn-delete" onClick="deletingPromotion()" class="btn btn-outline-danger btn-delete" data-id="${doc.id}">Borrar</button>
                         <button class="btn btn-outline-warning btn-edit" data-id="${doc.id}">Editar</button>
                     </div>
                 </td>
@@ -64,20 +64,14 @@ promocion.
   },
   error => console.error(error));
 
-//funcion para borrar
-const leerPromociones=document.getElementById("leerPromociones"),
- btnsDelete = leerPromociones.querySelectorAll(".btn-delete");
-btnsDelete.forEach((btn) =>
-  btn.addEventListener("click", async (e) => {
-    e.preventDefault();
-    console.log(e.target.dataset.id);
-    try {
-      await deletePromotion(e.target.dataset.id);
-    } catch (error) {
-      console.log(error);
-    }
-  })
-);
+  document.getElementById("btn-delete").addEventListener("click",deletingPromotion())
+  function deletingPromotion(){
+    idSend=document.getElementById("btn-delete").getAttribute("data-id")
+    promociones.doc(idSend).delete();
+    location.reload
+  }
+  console.log(idSend);
+  
 
 
 //obtiene etiqueta del formulario
