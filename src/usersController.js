@@ -19,7 +19,7 @@ var usuarios,
 
 
 //agrega valores a la coleccion
-const addUser=(phone, address)=>{
+const addUser= async (phone, address)=>{
   usuario.doc().set({
       name: infoUser.name,
       mail: infoUser.email,
@@ -79,6 +79,7 @@ promocion.
     snapshot.forEach(doc => {
       console.log(doc.id);
       const usuarios = doc.data();
+      return usuarios
      })
      if(usuarios.mail === email.value){
       document.getElementById("agregarUsuarios").innerHTML+=`
