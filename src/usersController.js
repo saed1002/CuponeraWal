@@ -12,7 +12,7 @@ const hoy = new Date(tiempoTranscurrido);
 
 var user = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(async snapshot => {
-    if(await sizeSnap >= 1){
+    if(await snapshot.size >= 1){
       console.log(snapshot.size)
       document.getElementById("agregarUsuarios").innerHTML += `
             <div class="container">
