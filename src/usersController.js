@@ -1,7 +1,7 @@
 //conexion a la bd de firebase
 const db = firebase.firestore()
 const sg = firebase.storage();
-
+var agregarUsuarios = document.getElementById("agregarUsuarios")
 
 //mandar a llamar una bd
 const usuario = db.collection("Usuarios");
@@ -22,7 +22,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
             </div>`;
     }
     else {
-      var agregarUsuarios = document.getElementById("agregarUsuarios").innerHTML += `
+      document.getElementById("agregarUsuarios").innerHTML += `
         <div class="container">
         <div class="row justify-content-md-center">
             <p class="text-center display-5"><i class="fas fa-tags"></i> Completa tu informacion</p>
@@ -39,20 +39,11 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
              </div>
          </div>
          <div class="row justify-content-md-center">
-         <button onclick="agregar(event);"class="btn btn-primary" >Enviar</button>
+         <button class="btn btn-primary">Enviar</button>
          </div>
         `;
-
-      var telefono = agregarUsuarios["telefono"],
-      direccion = agregarUsuarios["direccion"];
-      //Funcion agrega datos a "Usuarios"
-      function agregar(e){
-        e.preventDefault();
-        //obtiene valor del campo HTML puntos
-       
-        //llama a la funcion addUser, para agregar datos
-       addUser(telefono.value, direccion.value)
-       const addUser = (phone, address) => {
+      //agrega valores a la coleccion
+      const addUser = (phone, address) => {
         usuario.doc().set({
           name: userAuth.displayName,
           mail: userAuth.email,
@@ -63,9 +54,18 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
           points: 1,
         })
       }
+      //Funcion agrega datos a "Usuarios"
+      agregarUsuarios("submit", (e) => {
+        //evita recargo de pagina
+        e.preventDefault();
+        //obtiene valor del campo HTML puntos
+        var telefono = agregarUsuarios["telefono"],
+          direccion = agregarUsuarios["direccion"];
+        //llama a la funcion addUser, para agregar datos
+        addUser(telefono.value, direccion.value)
         telefono = agregarUsuarios["telefono"].value = "",
           direccion = agregarUsuarios["direccion"].value = "";
-      }
+      })
 
 
 
