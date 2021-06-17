@@ -29,7 +29,8 @@ const addUser= async (phone, address)=>{
       coupons: ['MbVjhFnai8T9O5G0aqaF'],
       points: 1,
   })}
-
+  var user = firebase.auth().currentUser;
+  console.log(user.email)
 //obtener promociones
 //obtener usuarios
 promocion.
