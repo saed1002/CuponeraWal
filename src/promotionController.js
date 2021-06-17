@@ -10,7 +10,7 @@ console.log(hoy.toISOString().split("T")[0])
 
 
 
-promocion.doc("mN8UlaQEpZVtbnjrvZWn").onSnapshot(
+promocion.doc("kCVSOcCJbGxMWk0oJH2N").onSnapshot(
     promociones => {
       if (promociones.exists) {
         console.log(promociones.id);
@@ -26,13 +26,13 @@ promocion.doc("mN8UlaQEpZVtbnjrvZWn").onSnapshot(
                 <div class="card-body">
                 <h5 class="card-title display-2 border-top">${datos.name}</h5>
                 <p class="card-text display-4 fst-italic">${datos.description}</p>
-                <img src="https://1000marcas.net/wp-content/uploads/2020/02/Walmart-logo.png" class="card-img-top" alt="...">
+                <img src="https://firebasestorage.googleapis.com/v0/b/cuponerawal.appspot.com/o/LOGO5.png?alt=media&token=91ae9512-e718-41f5-a433-02b739aaab11" class="card-img-top" alt="...">
                 <div class="card mb-3 bg-secondary">
                 <div class="card-body">
                 <p class="card-text">Codigo: ${datos.code}</p>
                 </div>  
                 </div>
-                <p class="card-text">El presente contrato describe los términos y condiciones aplicables al uso del contenido, productos y/o servicios del sitio web WAL-CUPONERA del cual es titular WAL-CUPONERA. Para hacer uso del contenido, productos y/o servicios del sitio web el usuario deberá sujetarse a los presentes términos y condiciones.</p>
+                <p class="card-text">El presente contrato describe los términos y condiciones aplicables al uso del contenido, productos y/o servicios del sitio web CUPONERA ProMaskot del cual es titular CUPONERA ProMaskot. Para hacer uso del contenido, productos y/o servicios del sitio web el usuario deberá sujetarse a los presentes términos y condiciones.</p>
                 <p class="card-text"><p class="text-primary fw-bolder display-6">Hasta ${datos.timeStart.split('T')[0]}</p></p>
             </div>
         </div>
