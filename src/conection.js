@@ -71,7 +71,6 @@ var infoUsuario
         async function terminaSesión() {
           try {
             await auth.signOut();
-            document.cookie="email=;"
           } catch (e) {
             procesaError(e);
           }
@@ -83,5 +82,3 @@ var infoUsuario
           console.log(e);
           alert(e.message);
         }
-
-        document.cookie="email="+infoUsuario
