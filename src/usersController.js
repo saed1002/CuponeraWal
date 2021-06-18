@@ -80,7 +80,6 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
     snapshot.forEach(registros=>{
 promocion.
   where("points",">=",registros.points)
-  orderBy("name", "asc").
   onSnapshot(
     snapshot => {
       console.log(snapshot.size);
