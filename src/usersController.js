@@ -86,6 +86,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
       promocion.onSnapshot(snapshot => {
         console.log(snapshot.size);
         if (snapshot.size >= 1) {
+          document.getElementById("agregarUsuarios").innerHTML = '';
           snapshot.forEach(doc => {
             console.log(doc.id);
             const promociones = doc.data();
@@ -115,7 +116,6 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                 </div>
       </div>      
                     `;
-                    document.getElementById("agregarUsuarios").innerHTML = ``;
                 var promocionesList = document.getElementById("promocionesList")
                 var btnsSelected = promocionesList.querySelectorAll(".btn-selected");
                 btnsSelected.forEach((btn) =>
