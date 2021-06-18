@@ -90,7 +90,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
             const promociones = doc.data();
             console.log(promociones.timeEnd.split("T")[1])
             console.log(promociones.points)
-            if (hoy.toISOString().split(".")[0] <= promociones.timeEnd && usr.points >= promociones.points && 1>=promociones.points) {
+            if (hoy.toISOString().split(".")[0] <= promociones.timeEnd && usr.points >= promociones.points && parseInt(promociones.used)>=1) {
               var refArch = sg.ref(promociones.rute);
               sg.refFromURL(refArch).getDownloadURL().then(function (url) {
                 document.getElementById("promocionesList").innerHTML =''; 
