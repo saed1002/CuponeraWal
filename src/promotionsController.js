@@ -1,25 +1,25 @@
 //conexion a la bd de firebase
-const db =firebase.firestore()
+const db = firebase.firestore()
 
 //firebase storage
 const sg = firebase.storage();
 
 //variable que guarda informacion del usuario logeado
-let infoUser={name:'',email:''}
+let infoUser = { name: '', email: '' }
 
 //mandar a llamar una bd
 const promocion = db.collection("Promociones");
 var promociones = db.collection("Promociones");
-var tasksContainer= document.getElementById("leerPromociones")
+var tasksContainer = document.getElementById("leerPromociones")
 
-//Obtener informacion del usuario logeado
-auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.displayName})
 
 //agrega valores a la coleccion
-const addPromotion=(name,description,discount,timeEnd,timeStart,code,points,coupons,rute)=>{
-  promocion.doc().set({
-      nameCreator: infoUser.name,
-      mail: infoUser.email,
+
+const addPromotion = (name, description, discount, timeEnd, timeStart, code, points, coupons, rute) => {
+  var user = firebase.auth().onAuthStateChanged(userAuth => {
+    promocion.doc().set({
+      nameCreator: userAuth.displayName,
+      mail: usuarioAuth.email,
       name,
       description,
       discount,
@@ -27,10 +27,12 @@ const addPromotion=(name,description,discount,timeEnd,timeStart,code,points,coup
       timeStart,
       code,
       points,
-      coupons, 
+      coupons,
       used: coupons,
       rute
-  })}
+    })
+  })
+}
 
 // borrado de datos
 const deletePromotion = (id) => promociones.doc(id).delete();
@@ -39,12 +41,12 @@ const deletePromotion = (id) => promociones.doc(id).delete();
 promocion.
   orderBy("name", "asc").
   onSnapshot(
- async snapshot => {
-    console.log(snapshot.size);
-    snapshot.forEach(doc => {
-      console.log(doc.id);
-      const promociones = doc.data();
-      tasksContainer.innerHTML+=`
+    async snapshot => {
+      console.log(snapshot.size);
+      snapshot.forEach(doc => {
+        console.log(doc.id);
+        const promociones = doc.data();
+        tasksContainer.innerHTML += `
             <tr class="text-center" data-id="${doc.id}">
                 <td>${promociones.name}</td>
                 <td>${promociones.description}</td>
@@ -61,62 +63,62 @@ promocion.
                     </div>
                 </td>
             </tr>`;
-            const btnsDelete = tasksContainer.querySelectorAll(".btn-delete");
-            btnsDelete.forEach((btn) =>
-              btn.addEventListener("click", async (e) => {
-                console.log(e.target.dataset.id);
-                try {
-                  console.log(e.target.dataset.id)
-                  await db.collection("Promociones").doc(e.target.dataset.id).delete();
-                } catch (error) {
-                  console.log(error);
-                }
-              })
-            );
-    })
-  },
-  error => console.error(error));
+        const btnsDelete = tasksContainer.querySelectorAll(".btn-delete");
+        btnsDelete.forEach((btn) =>
+          btn.addEventListener("click", async (e) => {
+            console.log(e.target.dataset.id);
+            try {
+              console.log(e.target.dataset.id)
+              await db.collection("Promociones").doc(e.target.dataset.id).delete();
+            } catch (error) {
+              console.log(error);
+            }
+          })
+        );
+      })
+    },
+    error => console.error(error));
 
-  
+
 
 
 //obtiene etiqueta del formulario
-let agregarPromociones=document.getElementById("agregarPromociones")
+let agregarPromociones = document.getElementById("agregarPromociones")
 //Funcion agrega datos a "Usuarios"
-agregarPromociones.addEventListener("submit",async (e)=>{
-//evita recargo de pagina
- e.preventDefault();
- //obtiene valor del campo HTML puntos
- var nombre=agregarPromociones["nombre"],
-    descripcion=agregarPromociones["descripcion"],
-    descuento=agregarPromociones["descuento"],
-    fechaInicio=agregarPromociones["fechaInicio"],
-    fechaFinal=agregarPromociones["fechaFinal"],
-    codigo=agregarPromociones["codigo"],
-    puntos=agregarPromociones["puntos"],
-    cupones=agregarPromociones["cupones"],
-    nombreArchivo=agregarPromociones["fileName"],
-    archivo=agregarPromociones["file"].files[0];
-//referencia de archivos
-var metadata = {
-  contentType: ['image/jpeg'],
-};
-var refArch = sg.ref(nombre.value+'/'+nombreArchivo.value);
-var rute=nombre.value+'/'+nombreArchivo.value
-//montar archivos
-await refArch.put(archivo,metadata);
-cupones=parseInt(cupones.value)
- //llama a la funcion addUser, para agregar datos
- await addPromotion(nombre.value,descripcion.value,descuento.value, fechaFinal.value,fechaInicio.value,codigo.value,puntos.value,cupones,rute)
-  var nombre=agregarPromociones["nombre"].value="",
-    descripcion=agregarPromociones["descripcion"].value="",
-    descuento=agregarPromociones["descuento"].value="",
-    fechaInicio=agregarPromociones["fechaInicio"].value="",
-    fechaFinal=agregarPromociones["fechaFinal"].value="",
-    codigo=agregarPromociones["codigo"].value="",
-    puntos=agregarPromociones["puntos"].value="",
-    cupones=agregarPromociones["cupones"].value="",
-    nombreArchivo=agregarPromociones["fileName"].value="",
-    archivo=agregarPromociones["file"].value="";
+agregarPromociones.addEventListener("submit", async (e) => {
+  //evita recargo de pagina
+  e.preventDefault();
+  //obtiene valor del campo HTML puntos
+  var nombre = agregarPromociones["nombre"],
+    descripcion = agregarPromociones["descripcion"],
+    descuento = agregarPromociones["descuento"],
+    fechaInicio = agregarPromociones["fechaInicio"],
+    fechaFinal = agregarPromociones["fechaFinal"],
+    codigo = agregarPromociones["codigo"],
+    puntos = agregarPromociones["puntos"],
+    cupones = agregarPromociones["cupones"],
+    nombreArchivo = agregarPromociones["fileName"],
+    archivo = agregarPromociones["file"].files[0];
+  //referencia de archivos
+  var metadata = {
+    contentType: ['image/jpeg'],
+  };
+  var refArch = sg.ref(nombre.value + '/' + nombreArchivo.value);
+  var rute = nombre.value + '/' + nombreArchivo.value
+  //montar archivos
+  await refArch.put(archivo, metadata);
+  cupones = parseInt(cupones.value)
+  //llama a la funcion addUser, para agregar datos
+  await addPromotion(nombre.value, descripcion.value, descuento.value, fechaFinal.value, fechaInicio.value, codigo.value, puntos.value, cupones, rute)
+  var nombre = agregarPromociones["nombre"].value = "",
+    descripcion = agregarPromociones["descripcion"].value = "",
+    descuento = agregarPromociones["descuento"].value = "",
+    fechaInicio = agregarPromociones["fechaInicio"].value = "",
+    fechaFinal = agregarPromociones["fechaFinal"].value = "",
+    codigo = agregarPromociones["codigo"].value = "",
+    puntos = agregarPromociones["puntos"].value = "",
+    cupones = agregarPromociones["cupones"].value = "",
+    nombreArchivo = agregarPromociones["fileName"].value = "",
+    archivo = agregarPromociones["file"].value = "";
 
 })
