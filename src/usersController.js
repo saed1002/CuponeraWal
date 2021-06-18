@@ -120,9 +120,9 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                       console.log(e.target.dataset.id)//id promocion
                       //elimina puntos por uso del cupon y los mete en su wallet
                       const getPromo = (id) => db.collection("Promociones").doc(id).get();
-                      const info= getPromo(e.target.dataset.id)
+                      const info= await getPromo(e.target.dataset.id)
                       const promocionUsuario= info.data()
-                      
+
                           usuario.doc(registros.id).update({
                             coupons: cupones.push(e.target.dataset.id),
                             points: (parseInt(usr.points) - parseInt(promocionUsuario.points))
