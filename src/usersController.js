@@ -3,8 +3,7 @@ const db = firebase.firestore()
 const sg = firebase.storage();
 
 var agregarUsuarios = document.getElementById("agregarUsuarios")
-document.getElementById("promocionesList").innerHTML = '';
-document.getElementById("agregarUsuarios").innerHTML = '';
+
 
 //mandar a llamar una bd
 const usuario = db.collection("Usuarios");
@@ -15,9 +14,10 @@ const hoy = new Date(tiempoTranscurrido);
 
 var user = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(async snapshot => {
+    document.getElementById("promocionesList").innerHTML = '';
     if (await snapshot.size >= 1) {
       console.log(snapshot.size)
-      document.getElementById("agregarUsuarios").innerHTML = `
+      document.getElementById("agregarUsuarios").innerHTML += `
             <div class="container">
             <div class="row justify-content-md-center">
                 <p class="text-center"><i class="fas fa-tags"></i> Gracias por tu registro</p>
@@ -25,7 +25,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
             </div>`;
     }
     else {
-      document.getElementById("agregarUsuarios").innerHTML = `
+      document.getElementById("agregarUsuarios").innerHTML += `
         <div class="container">
         <div class="row justify-content-md-center">
             <p class="text-center display-5"><i class="fas fa-tags"></i> Completa tu informacion</p>
@@ -77,7 +77,8 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
 
 
 //obtener promociones
-var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
+var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {  
+document.getElementById("agregarUsuarios").innerHTML = '';
   usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot => {
     snapshot.forEach(registros => {
       var usr = registros.data();
@@ -94,7 +95,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
             if (hoy.toISOString().split(".")[0] <= promociones.timeEnd && usr.points >= promociones.points) {
               var refArch = sg.ref(promociones.rute);
               sg.refFromURL(refArch).getDownloadURL().then(function (url) {
-                document.getElementById("promocionesList").innerHTML = `
+                document.getElementById("promocionesList").innerHTML += `
       <div class="card mb-3 bg-secondary" style="max-width: 540px;">
                 <div class="row g-0">
                   <div class="col-md-4">
