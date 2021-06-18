@@ -93,8 +93,8 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
             if (hoy.toISOString().split(".")[0] <= promociones.timeEnd && usr.points >= promociones.points) {
               var refArch = sg.ref(promociones.rute);
               sg.refFromURL(refArch).getDownloadURL().then(function (url) {
-                document.getElementById("promocionesList").innerHTML = '';
-                document.getElementById("promocionesList").innerHTML += `
+                document.getElementById("promocionesList").innerHTML += '';
+                document.getElementById("promocionesList").innerHTML = `
       <div class="card mb-3 bg-secondary" style="max-width: 540px;">
                 <div class="row g-0">
                   <div class="col-md-4">
