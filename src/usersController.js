@@ -83,7 +83,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
       var cupones = [usr.coupons]
       console.log(Array.isArray(cupones));
       promocion.onSnapshot(snapshot => {
-        document.getElementById("promocionesList").innerHTML =''; 
+       // document.getElementById("promocionesList").innerHTML =''; 
         console.log(snapshot.size);
         if (snapshot.size >= 1) {
           snapshot.forEach(doc => {
