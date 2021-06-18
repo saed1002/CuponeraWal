@@ -2,7 +2,7 @@
 const db = firebase.firestore()
 const sg = firebase.storage();
 
-document.getElementById("agregarUsuarios").innerHTML='';
+
 //mandar a llamar una bd
 const usuario = db.collection("Usuarios");
 const promocion = db.collection("Promociones");
@@ -58,6 +58,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
         points: 3,
       })
     }
+    var agregarUsuarios= document.getElementById("agregarUsuarios")
     //Funcion agrega datos a "Usuarios"
     agregarUsuarios.addEventListener("submit", (e) => {
       e.preventDefault()
@@ -90,7 +91,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
             const promociones = doc.data();
             console.log(promociones.timeEnd.split("T")[1])
             console.log(promociones.points)
-            if (hoy.toISOString().split(".")[0] <= promociones.timeEnd && usr.points >= promociones.points) {
+            if (hoy.toISOString().split(".")[0] <= promociones.timeEnd && usr.points >= promociones.points && promociones.points >=1) {
               var refArch = sg.ref(promociones.rute);
               sg.refFromURL(refArch).getDownloadURL().then(function (url) {
                 document.getElementById("promocionesList").innerHTML += `
@@ -133,6 +134,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                       promocion.doc(e.target.dataset.id).update({
                         used: (parseInt(promociones.used) - 1)
                       })
+                      promocionesList.innerHTML='';
                       //await db.collection("Promociones").doc(e.target.dataset.id).delete();
                     } catch (error) {
                       console.log(error);
@@ -148,6 +150,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
           })
         }
         else {
+          document.getElementById("promocionesList").innerHTML = '';
           document.getElementById("promocionesList").innerHTML += `
               <div class="text-white bg-dark" style="max-width: 540px;">
               <p class="text-center display-4">Proximamente se vendran nuevas promos</p>
