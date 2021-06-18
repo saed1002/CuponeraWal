@@ -72,9 +72,14 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
     })
   }, error => console.error(error))
 });
-//obtener promociones
-//obtener usuarios
+
+
+
+var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
+  usuario.where("mail","==",userAuth.email).onSnapshot(snapshot=>{
+    snapshot.forEach(registros=>{
 promocion.
+  where("points",">=",registros.points)
   orderBy("name", "asc").
   onSnapshot(
     snapshot => {
@@ -98,9 +103,10 @@ promocion.
                       <input name="prueba" value="${doc.id}" style="visibility: hidden"/>
                       <h5 class="card-title">${promociones.name}</h5>
                       <p class="card-text">${promociones.description}.</p>
+                      <p class="card-text">${promociones.discount} % de descuento</p>
                       <p class="card-text"><small class="">Desde ${promociones.timeStart.split('T')[0]} ${promociones.timeStart.split('T')[1]} Hasta ${promociones.timeEnd.split("T")[0]} ${promociones.timeEnd.split("T")[1]}</small></p>
                       <div class="row justify-content-md-center">
-                        <button id="btn" onClick="idPromotion()" class="btn btn-primary" data-id="${doc.id}">Ver la promocion</button>
+                        <button id="btn" onClick="idPromotion()" class="btn btn-primary" data-id="${doc.id}">Obtener</button>
                       </div>
                     </div>
                   </div>
@@ -121,14 +127,17 @@ promocion.
       }
     },
     error => console.error(error));
-var idSend =""
-document.getElementById("btn").addEventListener("click",idPromotion())
-    function idPromotion(){
-      idSend=document.getElementById("btn").getAttribute("data-id")
-      promocion.where("")
-    }
-    console.log(idSend);
-    
+
+    var idSend =""
+    document.getElementById("btn").addEventListener("click",idPromotion())
+        function idPromotion(){
+          idSend=document.getElementById("btn").getAttribute("data-id")
+          promocion.where("")
+        }
+        console.log(idSend);    
+})
+})})
+
         
 
 
