@@ -66,7 +66,6 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
         addUser(telefono.value, direccion.value)
         telefono = agregarUsuarios["telefono"].value = "",
           direccion = agregarUsuarios["direccion"].value = "";
-        checkRegister(snapshot.size)
       })
     }
   }, error => console.error(error))
