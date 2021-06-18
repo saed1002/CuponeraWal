@@ -65,7 +65,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
       var telefono = agregarUsuarios["telefono"],
         direccion = agregarUsuarios["direccion"];
       //llama a la funcion addUser, para agregar datos
-     await addUser(telefono.value, direccion.value)
+     addUser(telefono.value, direccion.value)
       telefono = agregarUsuarios["telefono"].value = "",
         direccion = agregarUsuarios["direccion"].value = "";
       checkRegister(snapshot.size)
