@@ -128,15 +128,16 @@ promocion.
     },
     error => console.error(error));
 
-    var idSend =""
-    document.getElementById("btn").addEventListener("click",idPromotion())
-        function idPromotion(){
-          idSend=document.getElementById("btn").getAttribute("data-id")
-          promocion.where("")
-        }
-        console.log(idSend);    
+
 })
-})})
+})
+var idSend =""
+document.getElementById("btn").addEventListener("click",idPromotion())
+    function idPromotion(){
+      idSend=document.getElementById("btn").getAttribute("data-id")
+    }
+    console.log(idSend);    
+})
 
         
 
