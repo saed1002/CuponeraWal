@@ -6,12 +6,12 @@ const usuario=db.collection("Usuarios");
 
 
 usuariosRegistrados=document.getElementById("usuariosRegistrados")
+usuariosRegistrados.innerHTML ='';
 //obtener usuarios
 promocion.
   orderBy("name", "asc").
   onSnapshot(
   snapshot => {
-    usuariosRegistrados.innerHTML ='';
     usuariosRegistrados.innerHTML +=`
     <div class="col-md-6">
       <div class="card">
