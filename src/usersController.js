@@ -2,9 +2,7 @@
 const db = firebase.firestore()
 const sg = firebase.storage();
 
-var agregarUsuarios = document.getElementById("agregarUsuarios")
-
-
+document.getElementById("agregarUsuarios")='';
 //mandar a llamar una bd
 const usuario = db.collection("Usuarios");
 const promocion = db.collection("Promociones");
@@ -12,12 +10,11 @@ const promocion = db.collection("Promociones");
 const tiempoTranscurrido = Date.now();
 const hoy = new Date(tiempoTranscurrido);
 
-window.addEventListener("DOMContentLoaded", async (e) => {
 var user = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(async snapshot => {
-    document.getElementById("agregarUsuarios").innerHTML = '';
     if (await snapshot.size >= 1) {
       console.log(snapshot.size)
+      document.getElementById("agregarUsuarios").innerHTML += '';
       document.getElementById("agregarUsuarios").innerHTML += `
             <div class="container">
             <div class="row justify-content-md-center">
@@ -26,6 +23,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
             </div>`;
     }
     else {
+      document.getElementById("agregarUsuarios").innerHTML += '';
       document.getElementById("agregarUsuarios").innerHTML += `
         <div class="container">
         <div class="row justify-content-md-center">
@@ -77,10 +75,8 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
 
 
 
-
 //obtener promociones
-var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {  
-  document.getElementById("promocionesList").innerHTML = ''
+var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot => {
     snapshot.forEach(registros => {
       var usr = registros.data();
@@ -152,7 +148,6 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
           })
         }
         else {
-          //document.getElementById("promocionesList").innerHTML = ''
           document.getElementById("promocionesList").innerHTML += `
               <div class="text-white bg-dark" style="max-width: 540px;">
               <p class="text-center display-4">Proximamente se vendran nuevas promos</p>
@@ -163,4 +158,3 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
     })
   })
 });
-})
