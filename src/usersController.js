@@ -78,7 +78,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot => {
     snapshot.forEach(registros => {
       var usr = registros.data();
-      var cupones=[usr.coupons]
+      var cupones = [usr.coupons]
       console.log(Array.isArray(cupones));
       promocion.onSnapshot(snapshot => {
         console.log(snapshot.size);
@@ -119,13 +119,18 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                     try {
                       console.log(e.target.dataset.id)//id promocion
                       //elimina puntos por uso del cupon y los mete en su wallet
-                      usuario.doc(registros.id).update({
-                        coupons: usr.coupons.push(e.target.dataset.id),
-                        points: (parseInt(usr.points) - parseInt(promociones.points))
+                      promociones.doc(e.target.dataset.id).onSnapshot(snapshot => {
+                        snapshot.forEach(datos => {
+                          var busqueda = datos.data()
+                          usuario.doc(registros.id).update({
+                            coupons: cupones.push(e.target.dataset.id),
+                            points: (parseInt(usr.points) - parseInt(busqueda.points))
+                          })
+                        })
                       })
                       //elimina un cupon de las promociones
                       promocion.doc(e.target.dataset.id).update({
-                        used:(parseInt(promociones.used)-1)
+                        used: (parseInt(promociones.used) - 1)
                       })
                       //await db.collection("Promociones").doc(e.target.dataset.id).delete();
                     } catch (error) {
