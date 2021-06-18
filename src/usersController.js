@@ -83,6 +83,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
       var cupones = [usr.coupons]
       console.log(Array.isArray(cupones));
       promocion.onSnapshot(snapshot => {
+        document.getElementById("promocionesList").innerHTML =''; 
         console.log(snapshot.size);
         if (snapshot.size >= 1) {
           snapshot.forEach(doc => {
@@ -93,7 +94,6 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
             if (hoy.toISOString().split(".")[0] <= promociones.timeEnd && usr.points >= promociones.points && parseInt(promociones.used)>=1) {
               var refArch = sg.ref(promociones.rute);
               sg.refFromURL(refArch).getDownloadURL().then(function (url) {
-                document.getElementById("promocionesList").innerHTML =''; 
                 document.getElementById("promocionesList").innerHTML += `
       <div class="card mb-3 bg-secondary" style="max-width: 540px;">
                 <div class="row g-0">
