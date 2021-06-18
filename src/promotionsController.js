@@ -16,10 +16,10 @@ var tasksContainer = document.getElementById("leerPromociones")
 //agrega valores a la coleccion
 
 const addPromotion = (name, description, discount, timeEnd, timeStart, code, points, coupons, rute) => {
-  var user = firebase.auth().onAuthStateChanged(userAuth => {
+  var user = firebase.auth().onAuthStateChanged(userAutenticado => {
     promocion.doc().set({
-      nameCreator: userAuth.displayName,
-      mail: usuarioAuth.email,
+      nameCreator: userAutenticado.displayName,
+      mail: userAutenticado.email,
       name,
       description,
       discount,
