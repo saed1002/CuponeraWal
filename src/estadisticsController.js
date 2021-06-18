@@ -51,7 +51,6 @@ usuario.
   onSnapshot(
   snapshot => {
     console.log(snapshot.size);
-    usuariosRegistrados.innerHTML =''
     usuariosRegistrados.innerHTML +=`
     <div class="col-md-6">
       <div class="card">
