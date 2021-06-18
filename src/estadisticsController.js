@@ -22,6 +22,7 @@ promocion.
       </div>
     </div>
     `;
+    document.getElementById("myfirstchart").innerHTML ='';
     snapshot.forEach(doc => {
     const promociones = doc.data();
     var porcentaje
@@ -31,7 +32,6 @@ promocion.
     if(((parseInt(promociones.used)*100)/parseInt(promociones.coupons)).toFixed()>50){
       porcentaje="bg-danger"
     }
-    document.getElementById("myfirstchart").innerHTML ='';
     document.getElementById("myfirstchart").innerHTML +=`
     <div class="md">
           <div class="card-title">${promociones.name}</div>
