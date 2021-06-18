@@ -76,9 +76,10 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
 
 
 var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
-  usuario.where("mail","==",userAuth.email).onSnapshot(snapshot=>{
+  usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot=>{
     snapshot.forEach(registros=>{
-      console.log(registros.name)
+      var usr=promociones = doc.data();
+      console.log(usr.name)
 promocion.
   onSnapshot(
     snapshot => {
@@ -89,7 +90,7 @@ promocion.
         const promociones = doc.data();
         console.log(promociones.timeEnd.split("T")[1])
         console.log(promociones.points)
-        if (hoy.toISOString().split(".")[0] <= promociones.timeEnd && registros.points >= promociones.points) {
+        if (hoy.toISOString().split(".")[0] <= promociones.timeEnd && usr.points >= promociones.points) {
           var refArch = sg.ref(promociones.rute);
           sg.refFromURL(refArch).getDownloadURL().then(function (url) {
             document.getElementById("promocionesList").innerHTML += `
