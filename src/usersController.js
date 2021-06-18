@@ -125,18 +125,13 @@ var idSend =""
 document.getElementById("btn").addEventListener("click",idPromotion())
     function idPromotion(){
       idSend=document.getElementById("btn").getAttribute("data-id")
-      console.log(idSend)
+      promocion.where("")
     }
     console.log(idSend);
     
         
 
-    /*
-    enviar.addEventListener(e=>{
-      e.eventPreventDefault;
-     var x= document.getElementById("idPromo").getAttribute("data-id")
-     console.log(x)
-}) */
+
 
 
 

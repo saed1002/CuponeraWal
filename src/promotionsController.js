@@ -10,6 +10,7 @@ let infoUser={name:'',email:''}
 //mandar a llamar una bd
 const promocion = db.collection("Promociones");
 var promociones = db.collection("Promociones");
+var tasksContainer= document.getElementById("leerPromociones")
 
 //Obtener informacion del usuario logeado
 auth.onAuthStateChanged(usr=>{infoUser.email=usr.email,infoUser.name=usr.displayName})
@@ -38,12 +39,12 @@ const deletePromotion = (id) => promociones.doc(id).delete();
 promocion.
   orderBy("name", "asc").
   onSnapshot(
-  snapshot => {
+ async snapshot => {
     console.log(snapshot.size);
     snapshot.forEach(doc => {
       console.log(doc.id);
       const promociones = doc.data();
-      document.getElementById("leerPromociones").innerHTML+=`
+      tasksContainer.innerHTML+=`
             <tr class="text-center" data-id="${doc.id}">
                 <td>${promociones.name}</td>
                 <td>${promociones.description}</td>
@@ -55,21 +56,27 @@ promocion.
                 <td>${promociones.coupons}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <button id="btn-delete" onClick="deletingPromotion()" class="btn btn-outline-danger btn-delete" data-id="${doc.id}">Borrar</button>
+                        <button class="btn btn-outline-danger btn-delete" data-id="${doc.id}">Borrar</button>
                         <button class="btn btn-outline-warning btn-edit" data-id="${doc.id}">Editar</button>
                     </div>
                 </td>
             </tr>`;
+            const btnsDelete = tasksContainer.querySelectorAll(".btn-delete");
+            btnsDelete.forEach((btn) =>
+              btn.addEventListener("click", async (e) => {
+                console.log(e.target.dataset.id);
+                try {
+                  console.log(e.target.dataset.id)
+                  await db.collection("Promociones").doc(e.target.dataset.id).delete();
+                } catch (error) {
+                  console.log(error);
+                }
+              })
+            );
     })
   },
   error => console.error(error));
 
-  document.getElementById("btn-delete").addEventListener("click",deletingPromotion())
-  function deletingPromotion(){
-    idSend=document.getElementById("btn-delete").getAttribute("data-id")
-    promociones.doc(idSend).delete();
-  }
-  console.log(idSend);
   
 
 
