@@ -83,7 +83,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
       var cupones = [usr.coupons]
       console.log(Array.isArray(cupones));
       promocion.onSnapshot(snapshot => {
-       // document.getElementById("promocionesList").innerHTML =''; 
+       document.getElementById("promocionesList").innerHTML =''; 
         console.log(snapshot.size);
         if (snapshot.size >= 1) {
           snapshot.forEach(doc => {
@@ -91,7 +91,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
             const promociones = doc.data();
             console.log(promociones.timeEnd.split("T")[1])
             console.log(promociones.points)
-            if ( hoy.toISOString().split(".")[0] <= promociones.timeEnd && usr.points >= promociones.points) {
+            if (hoy.toISOString().split(".")[0] >= promociones.timeStart && hoy.toISOString().split(".")[0] <= promociones.timeEnd && usr.points >= promociones.points && promociones.used >=1) {
               var refArch = sg.ref(promociones.rute);
               sg.refFromURL(refArch).getDownloadURL().then(function (url) {
                 document.getElementById("promocionesList").innerHTML += `
