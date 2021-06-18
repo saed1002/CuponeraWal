@@ -11,7 +11,7 @@ promocion.
   orderBy("name", "asc").
   onSnapshot(
   snapshot => {
-    usuariosRegistrados.innerHTML +='';
+    usuariosRegistrados.innerHTML ='';
     usuariosRegistrados.innerHTML +=`
     <div class="col-md-6">
       <div class="card">
@@ -31,7 +31,7 @@ promocion.
     if(((parseInt(promociones.used)*100)/parseInt(promociones.coupons)).toFixed()>50){
       porcentaje="bg-danger"
     }
-    document.getElementById("myfirstchart").innerHTML +='';
+    document.getElementById("myfirstchart").innerHTML ='';
     document.getElementById("myfirstchart").innerHTML +=`
     <div class="md">
           <div class="card-title">${promociones.name}</div>
@@ -51,7 +51,7 @@ usuario.
   onSnapshot(
   snapshot => {
     console.log(snapshot.size);
-    usuariosRegistrados.innerHTML +='';
+    usuariosRegistrados.innerHTML =''
     usuariosRegistrados.innerHTML +=`
     <div class="col-md-6">
       <div class="card">

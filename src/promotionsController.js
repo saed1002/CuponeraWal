@@ -43,10 +43,10 @@ promocion.
   onSnapshot(
     async snapshot => {
       console.log(snapshot.size);
+      tasksContainer.innerHTML ='';
       snapshot.forEach(doc => {
         console.log(doc.id);
         const promociones = doc.data();
-        tasksContainer.innerHTML +='';
         tasksContainer.innerHTML += `
             <tr class="text-center" data-id="${doc.id}">
                 <td>${promociones.name}</td>
@@ -87,6 +87,7 @@ promocion.
 let agregarPromociones = document.getElementById("agregarPromociones")
 //Funcion agrega datos a "Usuarios"
 agregarPromociones.addEventListener("submit", async (e) => {
+  agregarPromociones.innerHTML ='';
   //evita recargo de pagina
   e.preventDefault();
   //obtiene valor del campo HTML puntos

@@ -27,6 +27,7 @@ promocion.
   orderBy("name", "asc").
   onSnapshot(
   snapshot => {
+    document.getElementById("promocionesList").innerHTML = '';
     console.log(snapshot.size);
     snapshot.forEach(doc => {
       console.log(doc.id);
@@ -35,7 +36,7 @@ promocion.
       if(hoy.toISOString().split(".")[0]<=promociones.timeEnd){
       var refArch = sg.ref(promociones.rute);
       sg.refFromURL(refArch).getDownloadURL().then(function(url) {
-        document.getElementById("promocionesList").innerHTML += ''
+        
         document.getElementById("promocionesList").innerHTML +=`
       <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
