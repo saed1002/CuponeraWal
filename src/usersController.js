@@ -80,13 +80,13 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
 var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {  
   usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot => {
     snapshot.forEach(registros => {
+      document.getElementById("agregarUsuarios").innerHTML = '';
       var usr = registros.data();
       var cupones = [usr.coupons]
       console.log(Array.isArray(cupones));
       promocion.onSnapshot(snapshot => {
         console.log(snapshot.size);
         if (snapshot.size >= 1) {
-          document.getElementById("agregarUsuarios").innerHTML = '';
           snapshot.forEach(doc => {
             console.log(doc.id);
             const promociones = doc.data();
