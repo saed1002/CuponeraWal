@@ -2,7 +2,7 @@
 const db = firebase.firestore()
 const sg = firebase.storage();
 
-document.getElementById("agregarUsuarios")='';
+document.getElementById("agregarUsuarios").innerHTML='';
 //mandar a llamar una bd
 const usuario = db.collection("Usuarios");
 const promocion = db.collection("Promociones");
@@ -14,7 +14,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(async snapshot => {
     if (await snapshot.size >= 1) {
       console.log(snapshot.size)
-      document.getElementById("agregarUsuarios").innerHTML += '';
+      document.getElementById("agregarUsuarios").innerHTML = '';
       document.getElementById("agregarUsuarios").innerHTML += `
             <div class="container">
             <div class="row justify-content-md-center">
@@ -23,7 +23,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
             </div>`;
     }
     else {
-      document.getElementById("agregarUsuarios").innerHTML += '';
+      document.getElementById("agregarUsuarios").innerHTML = '';
       document.getElementById("agregarUsuarios").innerHTML += `
         <div class="container">
         <div class="row justify-content-md-center">
