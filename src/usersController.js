@@ -78,7 +78,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
 
 //obtener promociones
 var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {  
-document.getElementById("agregarUsuarios").innerHTML = '';
+document.getElementById("agregarUsuarios").innerHTML += ``;
   usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot => {
     snapshot.forEach(registros => {
       var usr = registros.data();
