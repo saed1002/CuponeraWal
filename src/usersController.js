@@ -77,24 +77,21 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
 
 
 var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
-  usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot=>{
-    snapshot.forEach(registros=>{
-      var usr= registros.data();
-      console.log(usr.name)
-promocion.
-  onSnapshot(
-    snapshot => {
-      console.log(snapshot.size);
-      if(snapshot.size >=1){
-      snapshot.forEach(doc => {
-        console.log(doc.id);
-        const promociones = doc.data();
-        console.log(promociones.timeEnd.split("T")[1])
-        console.log(promociones.points)
-        if (hoy.toISOString().split(".")[0] <= promociones.timeEnd && usr.points >= promociones.points) {
-          var refArch = sg.ref(promociones.rute);
-          sg.refFromURL(refArch).getDownloadURL().then(function (url) {
-            document.getElementById("promocionesList").innerHTML += `
+  usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot => {
+    snapshot.forEach(registros => {
+      var usr = registros.data();
+      promocion.onSnapshot(snapshot => {
+            console.log(snapshot.size);
+            if (snapshot.size >= 1) {
+              snapshot.forEach(doc => {
+                console.log(doc.id);
+                const promociones = doc.data();
+                console.log(promociones.timeEnd.split("T")[1])
+                console.log(promociones.points)
+                if (hoy.toISOString().split(".")[0] <= promociones.timeEnd && usr.points >= promociones.points) {
+                  var refArch = sg.ref(promociones.rute);
+                  sg.refFromURL(refArch).getDownloadURL().then(function (url) {
+                    document.getElementById("promocionesList").innerHTML += `
       <div class="card mb-3 bg-secondary" style="max-width: 540px;">
                 <div class="row g-0">
                   <div class="col-md-4">
@@ -114,62 +111,37 @@ promocion.
                   </div>
                 </div>
       </div>      
-      `;
-            const btnsSelected = promocionesList.querySelectorAll(".btn-selected");
-            btnsSelected.forEach((btn) =>
-              btn.addEventListener("click", async (e) => {
-                console.log(e.target.dataset.id);
-                try {
-                  console.log(e.target.dataset.id)
-                  /*
-                  await db.collection("Promociones").doc(e.target.dataset.id).delete();*/
-                } catch (error) {
-                  console.log(error);
+                    `;
+                    const btnsSelected = tasksContainer.querySelectorAll(".btn-selected");
+                    btnsSelected.forEach((btn) =>
+                      btn.addEventListener("click", async (e) => {
+                        console.log(e.target.dataset.id);
+                        try {
+                          console.log(e.target.dataset.id)
+                          //await db.collection("Promociones").doc(e.target.dataset.id).delete();
+                        } catch (error) {
+                          console.log(error);
+                        }
+                      })
+                    ); 
+                  }).catch(function (error) {
+                    console.log(error)
+                  });
                 }
+              
+              
               })
-            ); 
-          }).catch(function (error) {
-            console.log(error)
-          });
-        }})
-      }
-      else{
-        document.getElementById("promocionesList").innerHTML += `
-    <div class="text-white bg-dark" style="max-width: 540px;">
-    <p class="text-center display-4">Proximamente se vendran nuevas promos</p>
-    </div>`;
-      }
-    },
-    error => console.error(error));
-
-
-})
-})
-
-
-
-
-/*
-var idSend =""
-document.getElementById("btn").addEventListener("click",idPromotion())
-    function idPromotion(){
-      idSend=document.getElementById("btn").getAttribute("data-id") //id de la promocion
-      var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
-        usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot=>{
-          snapshot.forEach(registros=>{
-
-          })
-        })
-      })
-      //descuento de puntos ^
-    }  
-})*/
-
-        
-
-
-
-
-
+            }
+            else {
+              document.getElementById("promocionesList").innerHTML += `
+              <div class="text-white bg-dark" style="max-width: 540px;">
+              <p class="text-center display-4">Proximamente se vendran nuevas promos</p>
+              </div>`;
+            }
+          },
+          error => console.error(error));
+    })
+  })
+});
 
 
