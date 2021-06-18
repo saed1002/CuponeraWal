@@ -3,7 +3,6 @@ const db = firebase.firestore()
 const sg = firebase.storage();
 
 var agregarUsuarios = document.getElementById("agregarUsuarios")
-
 //mandar a llamar una bd
 const usuario = db.collection("Usuarios");
 const promocion = db.collection("Promociones");
@@ -11,13 +10,9 @@ const promocion = db.collection("Promociones");
 const tiempoTranscurrido = Date.now();
 const hoy = new Date(tiempoTranscurrido);
 
-function idPromotion(idpromo){
-  console.log(idpromo)
-}
-
 var user = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(async snapshot => {
-    if (await snapshot.size >= 1) {
+    if(await snapshot.size >= 1){
       console.log(snapshot.size)
       document.getElementById("agregarUsuarios").innerHTML += `
             <div class="container">
@@ -27,7 +22,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
             </div>`;
     }
     else {
-      document.getElementById("agregarUsuarios").innerHTML += `
+     document.getElementById("agregarUsuarios").innerHTML += `
         <div class="container">
         <div class="row justify-content-md-center">
             <p class="text-center display-5"><i class="fas fa-tags"></i> Completa tu informacion</p>
@@ -47,31 +42,31 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
          <button class="btn btn-primary">Enviar</button>
          </div>
         `;
-
+    
     }
-    //agrega valores a la coleccion
-    const addUser = (phone, address) => {
-      usuario.doc().set({
-        name: userAuth.displayName,
-        mail: userAuth.email,
-        phone,
-        address,
-        level: "user",
-        coupons: ['MbVjhFnai8T9O5G0aqaF'],
-        points: 1,
+      //agrega valores a la coleccion
+      const addUser = (phone, address) => {
+        usuario.doc().set({
+          name: userAuth.displayName,
+          mail: userAuth.email,
+          phone,
+          address,
+          level: "user",
+          coupons: ['MbVjhFnai8T9O5G0aqaF'],
+          points: 1,
+        })
+      }
+      //Funcion agrega datos a "Usuarios"
+      agregarUsuarios.addEventListener("submit", (e) => {
+        //obtiene valor del campo HTML puntos
+        var telefono = agregarUsuarios["telefono"],
+          direccion = agregarUsuarios["direccion"];
+        //llama a la funcion addUser, para agregar datos
+        addUser(telefono.value, direccion.value)
+        telefono = agregarUsuarios["telefono"].value = "",
+          direccion = agregarUsuarios["direccion"].value = "";
+          checkRegister(snapshot.size)
       })
-    }
-    //Funcion agrega datos a "Usuarios"
-    agregarUsuarios.addEventListener("submit", (e) => {
-      //obtiene valor del campo HTML puntos
-      var telefono = agregarUsuarios["telefono"],
-        direccion = agregarUsuarios["direccion"];
-      //llama a la funcion addUser, para agregar datos
-      addUser(telefono.value, direccion.value)
-      telefono = agregarUsuarios["telefono"].value = "",
-        direccion = agregarUsuarios["direccion"].value = "";
-      checkRegister(snapshot.size)
-    })
   }, error => console.error(error))
 });
 //obtener promociones
@@ -95,20 +90,19 @@ promocion.
                   <img src="${url}" style="height: 120px; weight:30px" alt="...">
                   </div>
                   <div class="col-md-8">
-                    <div id="idPromo" class="card-body" data-id="${doc.id}">
-                      <input name="prueba" value="${doc.id}" style="visibility: hidden"/>
+                    <div class="card-body" data-id="${doc.id}">
                       <h5 class="card-title">${promociones.name}</h5>
                       <p class="card-text">${promociones.description}.</p>
                       <p class="card-text"><small class="">Desde ${promociones.timeStart.split('T')[0]} ${promociones.timeStart.split('T')[1]} Hasta ${promociones.timeEnd.split("T")[0]} ${promociones.timeEnd.split("T")[1]}</small></p>
                       <div class="row justify-content-md-center">
-                        <button onClick="idPromotion("${doc.id}")" class="btn btn-primary">Ver la promocion</button>
+                        <button href="./inicio.html" class="btn btn-primary">Ver la promocion</a>
                       </div>
                     </div>
                   </div>
                 </div>
       </div>      
       `;
-
+            
           }).catch(function (error) {
             console.log(error)
           });
@@ -117,18 +111,7 @@ promocion.
       })
     },
     error => console.error(error));
-
-    //document.getElementById("idPromo")=function(){idPromotion(idpromo)}
-
-    
-        
-
-    /*
-    enviar.addEventListener(e=>{
-      e.eventPreventDefault;
-     var x= document.getElementById("idPromo").getAttribute("data-id")
-     console.log(x)
-}) */
+var contarUsuarios = usuario.where("mail", "==", email.value).get();
 
 
 
