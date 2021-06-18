@@ -78,7 +78,6 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
 
 //obtener promociones
 var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {  
-document.getElementById("agregarUsuarios").innerHTML += ``;
   usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot => {
     snapshot.forEach(registros => {
       var usr = registros.data();
@@ -116,6 +115,7 @@ document.getElementById("agregarUsuarios").innerHTML += ``;
                 </div>
       </div>      
                     `;
+                    document.getElementById("agregarUsuarios").innerHTML = ``;
                 var promocionesList = document.getElementById("promocionesList")
                 var btnsSelected = promocionesList.querySelectorAll(".btn-selected");
                 btnsSelected.forEach((btn) =>
