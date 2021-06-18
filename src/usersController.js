@@ -3,7 +3,6 @@ const db = firebase.firestore()
 const sg = firebase.storage();
 
 var agregarUsuarios = document.getElementById("agregarUsuarios")
-var promocionesList = document.getElementById("promocionesList")
 
 //mandar a llamar una bd
 const usuario = db.collection("Usuarios");
@@ -50,7 +49,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
     }
     //agrega valores a la coleccion
     const addUser = (phone, address) => {
-      usuario.doc().set({
+      usuario.add({
         name: userAuth.displayName,
         mail: userAuth.email,
         phone,
@@ -66,7 +65,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
       var telefono = agregarUsuarios["telefono"],
         direccion = agregarUsuarios["direccion"];
       //llama a la funcion addUser, para agregar datos
-      addUser(telefono.value, direccion.value)
+     await addUser(telefono.value, direccion.value)
       telefono = agregarUsuarios["telefono"].value = "",
         direccion = agregarUsuarios["direccion"].value = "";
       checkRegister(snapshot.size)
@@ -112,7 +111,8 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                 </div>
       </div>      
                     `;
-                    const btnsSelected = tasksContainer.querySelectorAll(".btn-selected");
+                    var promocionesList=document.getElementById("promocionesList")
+                    var btnsSelected = promocionesList.querySelectorAll(".btn-selected");
                     btnsSelected.forEach((btn) =>
                       btn.addEventListener("click", async (e) => {
                         console.log(e.target.dataset.id);
