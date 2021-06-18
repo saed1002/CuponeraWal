@@ -12,7 +12,7 @@ promocion.
   onSnapshot(
   snapshot => {
     usuariosRegistrados.innerHTML ='';
-    usuariosRegistrados.innerHTML =`
+    usuariosRegistrados.innerHTML +=`
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
@@ -32,7 +32,7 @@ promocion.
       porcentaje="bg-danger"
     }
     document.getElementById("myfirstchart").innerHTML='';
-    document.getElementById("myfirstchart").innerHTML =`
+    document.getElementById("myfirstchart").innerHTML +=`
     <div class="md">
           <div class="card-title">${promociones.name}</div>
           <div class="progress">
@@ -52,7 +52,7 @@ usuario.
   snapshot => {
     console.log(snapshot.size);
     usuariosRegistrados.innerHTML ='';
-    usuariosRegistrados.innerHTML =`
+    usuariosRegistrados.innerHTML +=`
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">

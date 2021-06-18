@@ -47,7 +47,7 @@ promocion.
         console.log(doc.id);
         const promociones = doc.data();
         tasksContainer.innerHTML ='';
-        tasksContainer.innerHTML = `
+        tasksContainer.innerHTML += `
             <tr class="text-center" data-id="${doc.id}">
                 <td>${promociones.name}</td>
                 <td>${promociones.description}</td>
