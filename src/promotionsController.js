@@ -87,7 +87,6 @@ promocion.
 let agregarPromociones = document.getElementById("agregarPromociones")
 //Funcion agrega datos a "Usuarios"
 agregarPromociones.addEventListener("submit", async (e) => {
-  agregarPromociones.innerHTML ='';
   //evita recargo de pagina
   e.preventDefault();
   //obtiene valor del campo HTML puntos
