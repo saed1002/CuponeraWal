@@ -3,6 +3,7 @@ const db = firebase.firestore()
 const sg = firebase.storage();
 
 var agregarUsuarios = document.getElementById("agregarUsuarios")
+var promocionesList = document.getElementById("promocionesList")
 
 //mandar a llamar una bd
 const usuario = db.collection("Usuarios");
@@ -107,7 +108,7 @@ promocion.
                       <p class="card-text">${promociones.discount} % de descuento</p>
                       <p class="card-text"><small class="">Desde ${promociones.timeStart.split('T')[0]} ${promociones.timeStart.split('T')[1]} Hasta ${promociones.timeEnd.split("T")[0]} ${promociones.timeEnd.split("T")[1]}</small></p>
                       <div class="row justify-content-md-center">
-                        <button id="btn" onClick="idPromotion()" class="btn btn-primary" data-id="${doc.id}">Obtener</button>
+                        <button class="btn btn-primary btn-selected" data-id="${doc.id}">Obtener</button>
                       </div>
                     </div>
                   </div>
@@ -132,13 +133,37 @@ promocion.
 
 })
 })
+
+
+const btnsSelected = promocionesList.querySelectorAll(".btn-selected");
+btnsSelected.forEach((btn) =>
+  btn.addEventListener("click", async (e) => {
+    console.log(e.target.dataset.id);
+    try {
+      console.log(e.target.dataset.id)
+      /*
+      await db.collection("Promociones").doc(e.target.dataset.id).delete();*/
+    } catch (error) {
+      console.log(error);
+    }
+  })
+);
+
+/*
 var idSend =""
 document.getElementById("btn").addEventListener("click",idPromotion())
     function idPromotion(){
-      idSend=document.getElementById("btn").getAttribute("data-id")
-    }
-    console.log(idSend);    
-})
+      idSend=document.getElementById("btn").getAttribute("data-id") //id de la promocion
+      var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
+        usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot=>{
+          snapshot.forEach(registros=>{
+
+          })
+        })
+      })
+      //descuento de puntos ^
+    }  
+})*/
 
         
 
