@@ -53,7 +53,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
         address,
         level: "user",
         coupons: ['MbVjhFnai8T9O5G0aqaF'],
-        points: 1,
+        points: 3,
       })
     }
     //Funcion agrega datos a "Usuarios"
@@ -114,9 +114,17 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                 var btnsSelected = promocionesList.querySelectorAll(".btn-selected");
                 btnsSelected.forEach((btn) =>
                   btn.addEventListener("click", async (e) => {
-                    console.log(e.target.dataset.id);
                     try {
-                      console.log(e.target.dataset.id)
+                      console.log(e.target.dataset.id)//id promocion
+                      //elimina puntos por uso del cupon y los mete en su wallet
+                      usuario.where("email","==",userAuth.email).set({
+                        coupons: usr.coupons.push(e.target.dataset.id),
+                        points: (parseInt(usr.points) - parseInt(promociones.points))
+                      })
+                      //elimina un cupon de las promociones
+                      promocion.doc(e.target.dataset.id).set({
+                        used:(parseInt(promociones.used)-1)
+                      })
                       //await db.collection("Promociones").doc(e.target.dataset.id).delete();
                     } catch (error) {
                       console.log(error);
