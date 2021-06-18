@@ -78,7 +78,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
 var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot=>{
     snapshot.forEach(registros=>{
-      var usr=promociones = doc.data();
+      var usr= doc.data();
       console.log(usr.name)
 promocion.
   onSnapshot(
