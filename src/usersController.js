@@ -118,7 +118,6 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                 </div>
       </div>      
                     `;
-                    document.getElementById("promocionesList").innerHTML = ''
                 var promocionesList = document.getElementById("promocionesList")
                 var btnsSelected = promocionesList.querySelectorAll(".btn-selected");
                 btnsSelected.forEach((btn) =>
