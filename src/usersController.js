@@ -115,7 +115,19 @@ promocion.
                 </div>
       </div>      
       `;
-          
+            const btnsSelected = promocionesList.querySelectorAll(".btn-selected");
+            btnsSelected.forEach((btn) =>
+              btn.addEventListener("click", async (e) => {
+                console.log(e.target.dataset.id);
+                try {
+                  console.log(e.target.dataset.id)
+                  /*
+                  await db.collection("Promociones").doc(e.target.dataset.id).delete();*/
+                } catch (error) {
+                  console.log(error);
+                }
+              })
+            ); 
           }).catch(function (error) {
             console.log(error)
           });
@@ -135,19 +147,7 @@ promocion.
 })
 
 
-const btnsSelected = promocionesList.querySelectorAll(".btn-selected");
-btnsSelected.forEach((btn) =>
-  btn.addEventListener("click", async (e) => {
-    console.log(e.target.dataset.id);
-    try {
-      console.log(e.target.dataset.id)
-      /*
-      await db.collection("Promociones").doc(e.target.dataset.id).delete();*/
-    } catch (error) {
-      console.log(error);
-    }
-  })
-);
+
 
 /*
 var idSend =""
