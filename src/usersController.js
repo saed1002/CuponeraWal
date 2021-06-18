@@ -13,7 +13,7 @@ const tiempoTranscurrido = Date.now();
 const hoy = new Date(tiempoTranscurrido);
 
 window.addEventListener("DOMContentLoaded", async (e) => {
-
+  document.getElementById("agregarUsuarios").innerHTML = '';
 var user = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(async snapshot => {
     document.getElementById("promocionesList").innerHTML = '';
@@ -81,9 +81,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
 
 //obtener promociones
 var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {  
-
   usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot => {
-    document.getElementById("agregarUsuarios").innerHTML = '';
     snapshot.forEach(registros => {
       var usr = registros.data();
       var cupones = [usr.coupons]
