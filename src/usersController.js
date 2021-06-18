@@ -12,9 +12,10 @@ const hoy = new Date(tiempoTranscurrido);
 
 var user = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(async snapshot => {
-    document.getElementById("agregarUsuarios").innerHTML = '';
+    
     if (await snapshot.size >= 1) {
       console.log(snapshot.size)
+      document.getElementById("agregarUsuarios").innerHTML = '';
       document.getElementById("agregarUsuarios").innerHTML += `
             <div class="container">
             <div class="row justify-content-md-center">
@@ -23,6 +24,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
             </div>`;
     }
     else {
+      document.getElementById("agregarUsuarios").innerHTML = '';
       document.getElementById("agregarUsuarios").innerHTML += `
         <div class="container">
         <div class="row justify-content-md-center">
