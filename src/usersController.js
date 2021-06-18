@@ -58,6 +58,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
       }
       //Funcion agrega datos a "Usuarios"
       agregarUsuarios.addEventListener("submit", (e) => {
+        e.preventDefault()
         //obtiene valor del campo HTML puntos
         var telefono = agregarUsuarios["telefono"],
           direccion = agregarUsuarios["direccion"];
