@@ -79,7 +79,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail","==",userAuth.email).onSnapshot(snapshot=>{
     snapshot.forEach(registros=>{
 promocion.
-  where("points",">=",registros.points)
+  where("points",">=",registros.points).
   onSnapshot(
     snapshot => {
       console.log(snapshot.size);
