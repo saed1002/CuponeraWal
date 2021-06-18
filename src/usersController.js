@@ -118,7 +118,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                 var promocionesList = document.getElementById("promocionesList")
                 var btnsSelected = promocionesList.querySelectorAll(".btn-selected");
 
-                btnsSelected.forEach((btn) =>
+                btnsSelected.forEach((btn) =>{
                 promocionesList.innerHTML='';
                   btn.addEventListener("click", async (e) => {
                     try {
@@ -142,7 +142,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                       console.log(error);
                     }
                   })
-                );
+                });
               }).catch(function (error) {
                 console.log(error)
               });
