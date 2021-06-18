@@ -119,8 +119,8 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                 var btnsSelected = promocionesList.querySelectorAll(".btn-selected");
 
                 btnsSelected.forEach((btn) =>{
-                promocionesList.innerHTML='';
                   btn.addEventListener("click", async (e) => {
+                    promocionesList.innerHTML='';
                     try {
                       console.log(e.target.dataset.id)//id promocion
                       //elimina puntos por uso del cupon y los mete en su wallet
