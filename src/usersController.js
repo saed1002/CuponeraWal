@@ -87,7 +87,7 @@ promocion.
         console.log(doc.id);
         const promociones = doc.data();
         console.log(promociones.timeEnd.split("T")[1])
-        if (hoy.toISOString().split(".")[0] <= promociones.timeEnd && promociones.points >= registros.points) {
+        if (hoy.toISOString().split(".")[0] <= promociones.timeEnd && promociones.points <= registros.points) {
           var refArch = sg.ref(promociones.rute);
           sg.refFromURL(refArch).getDownloadURL().then(function (url) {
             document.getElementById("promocionesList").innerHTML += `
