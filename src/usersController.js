@@ -78,6 +78,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot => {
     snapshot.forEach(registros => {
       var usr = registros.data();
+      console.log(usr.coupons);
       promocion.onSnapshot(snapshot => {
         console.log(snapshot.size);
         if (snapshot.size >= 1) {
