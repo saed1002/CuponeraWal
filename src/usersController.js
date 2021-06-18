@@ -16,7 +16,6 @@ window.addEventListener("DOMContentLoaded", async (e) => {
   document.getElementById("agregarUsuarios").innerHTML = '';
 var user = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(async snapshot => {
-    document.getElementById("promocionesList").innerHTML = '';
     if (await snapshot.size >= 1) {
       console.log(snapshot.size)
       document.getElementById("agregarUsuarios").innerHTML += `
@@ -82,6 +81,7 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
 //obtener promociones
 var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {  
   usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot => {
+    document.getElementById("promocionesList").innerHTML = ''
     snapshot.forEach(registros => {
       var usr = registros.data();
       var cupones = [usr.coupons]
@@ -152,6 +152,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
           })
         }
         else {
+          document.getElementById("promocionesList").innerHTML = ''
           document.getElementById("promocionesList").innerHTML += `
               <div class="text-white bg-dark" style="max-width: 540px;">
               <p class="text-center display-4">Proximamente se vendran nuevas promos</p>
