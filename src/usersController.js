@@ -82,7 +82,8 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot => {
     snapshot.forEach(registros => {
       var usr = registros.data();
-      var cupones = [usr.coupons]
+      var cupones = new Array()
+      cupones.push(usr.coupons)
       console.log(Array.isArray(cupones));
       promocion.onSnapshot(snapshot => {
        document.getElementById("promocionesList").innerHTML =''; 
@@ -133,9 +134,8 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                       var colecccionCupones=[]
                       colecccionCupones.push(cupones)
                       colecccionCupones.push(e.target.dataset.id)
-                      console.log(coleccionCupones);
                           usuario.doc(registros.id).update({
-                            coupons: cupones.push(e.target.dataset.id),
+                            coupons: colecccionCupones,
                             points: (parseInt(usr.points) - parseInt(promocionUsuario.points))
                           })
                       //elimina un cupon de las promociones
