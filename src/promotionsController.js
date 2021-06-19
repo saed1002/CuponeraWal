@@ -80,7 +80,7 @@ promocion.
           })
         );
         const btnsEdit = tasksContainer.querySelectorAll(".btn-edit");
-        btnsEdit.forEach((btn)=>btn.addEventListener("click", async (e) => {
+        btnsEdit.forEach((btn) => btn.addEventListener("click", async (e) => {
           console.log(e.target.dataset.id);
           let agregarPromociones = document.getElementById("agregarPromociones");
           var nombre = agregarPromociones["nombre"],
@@ -91,20 +91,17 @@ promocion.
             codigo = agregarPromociones["codigo"],
             puntos = agregarPromociones["puntos"],
             cupones = agregarPromociones["cupones"]
-          await db.collection("Promociones").doc(e.target.dataset.id).onSnapshot(
-            snp => {
-              snp.forEach(leerPromo => {
-                var read = leerPromo.data();
-                nombre.value = read.name,
-                  descripcion.value = read.description,
-                  descuento.value = read.discount,
-                  fechaInicio.value = read.timeStart,
-                  fechaFinal.value = read.timeEnd,
-                  codigo.value = read.code,
-                  puntos.value = read.points,
-                  cupones.value = read.coupons
-              })
-            });
+          var leerPromo = await db.collection("Promociones").doc(e.target.dataset.id).get()
+          var read = leerPromo.data();
+            nombre.value = read.name,
+            descripcion.value = read.description,
+            descuento.value = read.discount,
+            fechaInicio.value = read.timeStart,
+            fechaFinal.value = read.timeEnd,
+            codigo.value = read.code,
+            puntos.value = read.points,
+            cupones.value = read.coupons
+
           isEditable = true
           idPromo = e.target.dataset.id
         }))
