@@ -82,6 +82,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot => {
     snapshot.forEach(registros => {
       var usr = registros.data();
+      if(usr.points >=1){
       cupones[cupones]=usr.coupons
       console.log(Array.isArray(cupones));
       promocion.onSnapshot(snapshot => {
@@ -161,6 +162,6 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
         }
       },
         error => console.error(error));
-    })
+    }})
   })
 });
