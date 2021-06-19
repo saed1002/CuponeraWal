@@ -120,7 +120,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                     `;
                 var promocionesList = document.getElementById("promocionesList")
                 var btnsSelected = promocionesList.querySelectorAll(".btn-selected");
-
+                var colecccionCupones=[]
                 btnsSelected.forEach((btn) =>{
                   btn.addEventListener("click", async (e) => {
                     promocionesList.innerHTML='';
@@ -131,7 +131,6 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                       const info= await getPromo(e.target.dataset.id)
                       const promocionUsuario= info.data()
                       console.log(e.target.dataset.id)
-                      var colecccionCupones=[]
                       colecccionCupones.push(cupones)
                       colecccionCupones.push(e.target.dataset.id)
                           usuario.doc(registros.id).update({
