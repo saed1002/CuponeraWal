@@ -131,8 +131,8 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                       const promocionUsuario= info.data()
                       console.log(e.target.dataset.id)
                       colecccionCupones[colecccionCupones]=e.target.dataset.id
-                      usuario.doc(registros.id).onSnapshot(snapshot=>{
-                          snapshot.forEach(documents=>{
+                      usuario.doc(registros.id).onSnapshot(snapp=>{
+                          snapp.forEach(documents=>{
                             var Usuarios=documents.data()
                             colecccionCupones[colecccionCupones]=Usuarios.coupons
                             console.log(colecccionCupones);
