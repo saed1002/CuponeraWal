@@ -129,20 +129,10 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                       const info= await getPromo(e.target.dataset.id)
                       const promocionUsuario= info.data()
                       /** **/
-                      /** **/
-                      const getCupones = (id) => db.collection("Usuarios").doc(id).get();
-                      const infoCupones= await getCupones(registros.id)
-                      console.log(infoCupones.data)
-                      const cuponesAlmacenados=infoCupones.data()
-                      console.log(typeof cuponesAlmacenados.coupons);
-                      console.log(typeof e.target.dataset.id);
-                      colecccionCupones[colecccionCupones]=cuponesAlmacenados.coupons
-                      console.log("primer guardado de cupones del usuario "+colecccionCupones);
-                      colecccionCupones[colecccionCupones]=e.target.dataset.id
-                      console.log("segundo guardado de cupones de la promo "+colecccionCupones);
+                      const cuponSelected=e.target.dataset.id
                             console.log(colecccionCupones);
                                 usuario.doc(registros.id).update({
-                                  coupons: coupons.push(e.target.dataset.id),
+                                  coupons: cuponSelected.push(),
                                   points: (parseInt(usr.points) - parseInt(promocionUsuario.points))
                                 })
 
