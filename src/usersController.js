@@ -79,10 +79,10 @@ var user = firebase.auth().onAuthStateChanged(userAuth => {
 var cupones=[]
 //obtener promociones
 var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
-  usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot => {
+  usuario.where("mail", "==", userAuth.email).onSnapshot( async snapshot => {
     snapshot.forEach(registros => {
       var usr = registros.data();
-      if(parseInt(usr.points) >= 1){
+      if(parseInt(await usr.points) >= 1){
       cupones[cupones]=usr.coupons
       console.log(Array.isArray(cupones));
       promocion.onSnapshot(snapshot => {
