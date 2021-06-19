@@ -134,8 +134,8 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                       const infoCupones= await getCupones(registros.id)
                       console.log(infoCupones.data)
                       const cuponesAlmacenados=infoCupones.data()
-                      console.log("historico de cupones "+cuponesAlmacenados.coupons);
-                      console.log("cupon seleccionado: "+e.target.dataset.id);
+                      console.log(typeof cuponesAlmacenados.coupons);
+                      console.log(typeof e.target.dataset.id);
                       colecccionCupones[colecccionCupones]=cuponesAlmacenados.coupons
                       console.log("primer guardado de cupones del usuario "+colecccionCupones);
                       colecccionCupones[colecccionCupones]=e.target.dataset.id
