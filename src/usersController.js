@@ -150,13 +150,6 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                 console.log(error)
               });
             }
-            else {
-              document.getElementById("promocionesList").innerHTML = '';
-              document.getElementById("promocionesList").innerHTML += `
-                  <div class="text-white bg-dark" style="max-width: 540px;">
-                  <p class="text-center display-4">Proximamente se vendran nuevas promos</p>
-                  </div>`;
-            }
           })
         }
         else {
@@ -168,13 +161,6 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
         }
       },
         error => console.error(error));
-    }
-    else {
-      document.getElementById("promocionesList").innerHTML = '';
-      document.getElementById("promocionesList").innerHTML += `
-          <div class="text-white bg-dark" style="max-width: 540px;">
-          <p class="text-center display-4">Proximamente se vendran nuevas promos</p>
-          </div>`;
     }
   })
   })
