@@ -148,7 +148,7 @@ promocion.
              code: codigo.value, 
              points: puntos.value, 
              coupons: cupones,
-             used: (parseInt(datosCupon.used)+cupones), 
+             used: cupones, 
              rute
             })
             isEditable=false
