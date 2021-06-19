@@ -82,7 +82,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
   usuario.where("mail", "==", userAuth.email).onSnapshot(snapshot => {
     snapshot.forEach(registros => {
       var usr = registros.data();
-      if(parseInt(usr.points) >=1){
+      if(parseInt(usr.points) >= 1){
       cupones[cupones]=usr.coupons
       console.log(Array.isArray(cupones));
       promocion.onSnapshot(snapshot => {
@@ -149,8 +149,13 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                 console.log(error)
               });
             }
-
-
+            else {
+              document.getElementById("promocionesList").innerHTML = '';
+              document.getElementById("promocionesList").innerHTML += `
+                  <div class="text-white bg-dark" style="max-width: 540px;">
+                  <p class="text-center display-4">Proximamente se vendran nuevas promos</p>
+                  </div>`;
+            }
           })
         }
         else {
@@ -162,6 +167,14 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
         }
       },
         error => console.error(error));
-    }})
+    }
+    else {
+      document.getElementById("promocionesList").innerHTML = '';
+      document.getElementById("promocionesList").innerHTML += `
+          <div class="text-white bg-dark" style="max-width: 540px;">
+          <p class="text-center display-4">Proximamente se vendran nuevas promos</p>
+          </div>`;
+    }
+  })
   })
 });
