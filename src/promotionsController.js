@@ -138,7 +138,7 @@ promocion.
           else{
              var getCoupons=await db.collection("promociones").doc(idPromo).get();
              var datosCupon=getCoupons.data();
-
+            console.log(datosCupon.used)
              await db.collection("Promociones").doc(idPromo).update({
              name: nombre.value, 
              description: descripcion.value, 
@@ -147,7 +147,7 @@ promocion.
              timeStart: fechaInicio.value, 
              code: codigo.value, 
              points: puntos.value, 
-             coupons: (parseInt(datosCupon.coupons)+cupones),
+             coupons: cupones,
              used: (parseInt(datosCupon.used)+cupones), 
              rute
             })
