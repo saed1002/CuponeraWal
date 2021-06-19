@@ -131,7 +131,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                       /** **/
                       /** **/
                       const getCupones = (id) => db.collection("Usuarios").doc(id).get();
-                      const infoCupones= await getCupones(userAuth.email)
+                      const infoCupones= await getCupones(registros.id)
                       const cuponesAlmacenados=infoCupones.data()
                       colecccionCupones[colecccionCupones]=cuponesAlmacenados.coupons
                       colecccionCupones[colecccionCupones]=e.target.dataset.id
