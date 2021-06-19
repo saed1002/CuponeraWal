@@ -42,6 +42,7 @@ var infoUsuario
               // @ts-ignore Muestra el avatar registrado en Google.
               avatar.src = usuarioAuth.photoURL;
               if(usuarioAuth.email==="406474058038.cuponera@gmail.com"){
+                document.getElementById("navar").innerHTML='';
                 document.getElementById("navar").innerHTML+=`
               <div class="container-fluid">
                     <a class="navbar-brand" href="./index.html">
@@ -54,6 +55,7 @@ var infoUsuario
               `
               }
               else{
+                document.getElementById("navar").innerHTML='';
                 document.getElementById("navar").innerHTML+=`
                 <div class="container-fluid">
                       <a class="navbar-brand" href="./index.html">
