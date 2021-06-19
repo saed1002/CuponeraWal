@@ -130,13 +130,13 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                       const info=await getPromo(e.target.dataset.id)                  
                       const promocionUsuario= info.data()
                       /** **/
-                                usuario.doc(registros.id).update({
+                            await usuario.doc(registros.id).update({
                                   coupons: firebase.firestore.FieldValue.arrayUnion(e.target.dataset.id),
                                   points: (parseInt(usr.points) - parseInt(promocionUsuario.points))
                                 })
                                 document.getElementById("promocionesList").innerHTML =' ';
                       //elimina un cupon de las promociones
-                      promocion.doc(e.target.dataset.id).update({
+                     await promocion.doc(e.target.dataset.id).update({
                         used: (parseInt(promociones.used) - 1)
                       })
                       document.getElementById("promocionesList").innerHTML ='';

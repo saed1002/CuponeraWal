@@ -135,6 +135,24 @@ promocion.
           if (isEditable == false) {
             await addPromotion(nombre.value, descripcion.value, descuento.value, fechaFinal.value, fechaInicio.value, codigo.value, puntos.value, cupones, rute)
           }
+          else{
+             var getCoupons=await db.collection("promociones").doc(idPromo).get();
+             var datosCupon=getCoupons.data();
+
+             await db.collection("Promociones").doc(idPromo).update({
+             name: nombre.value, 
+             description: descripcion.value, 
+             discount: descuento.value, 
+             timeEnd: fechaFinal.value, 
+             timeStart: fechaInicio.value, 
+             code: codigo.value, 
+             points: puntos.value, 
+             coupons: (parseInt(datosCupon.coupons)+cupones),
+             used: (parseInt(datosCupon.used)+cupones), 
+             rute
+            })
+            isEditable=false
+          }
           var nombre = agregarPromociones["nombre"].value = "",
             descripcion = agregarPromociones["descripcion"].value = "",
             descuento = agregarPromociones["descuento"].value = "",
