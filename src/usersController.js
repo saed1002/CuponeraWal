@@ -119,22 +119,21 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                     `;
                 var promocionesList = document.getElementById("promocionesList")
                 var btnsSelected = promocionesList.querySelectorAll(".btn-selected");
-                var colecccionCupones=[]
                 btnsSelected.forEach((btn) =>{
                   btn.addEventListener("click", async (e) => {
                     promocionesList.innerHTML='';
                     try {
                       //elimina puntos por uso del cupon y los mete en su wallet
                       const getPromo = (id) => db.collection("Promociones").doc(id).get();
-                      const info= getPromo(e.target.dataset.id)
+                      const info=await getPromo(e.target.dataset.id)                  
                       const promocionUsuario= info.data()
+                      document.getElementById("promocionesList").innerHTML =" ";
                       /** **/
-                      const cuponSelected=e.target.dataset.id
-                            console.log(colecccionCupones);
                                 usuario.doc(registros.id).update({
-                                  coupons: firebase.firestore.FieldValue.arrayUnion(cuponSelected),
+                                  coupons: firebase.firestore.FieldValue.arrayUnion(e.target.dataset.id),
                                   points: (parseInt(usr.points) - parseInt(promocionUsuario.points))
                                 })
+                                document.getElementById("promocionesList").innerHTML =" ";
                       //elimina un cupon de las promociones
                       promocion.doc(e.target.dataset.id).update({
                         used: (parseInt(promociones.used) - 1)
