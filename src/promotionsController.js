@@ -136,9 +136,6 @@ promocion.
             await addPromotion(nombre.value, descripcion.value, descuento.value, fechaFinal.value, fechaInicio.value, codigo.value, puntos.value, cupones, rute)
           }
           else{
-             var getCoupons=await db.collection("promociones").doc(idPromo).get();
-             var datosCupon=getCoupons.data();
-            console.log(datosCupon.used)
              await db.collection("Promociones").doc(idPromo).update({
              name: nombre.value, 
              description: descripcion.value, 
