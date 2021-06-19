@@ -93,7 +93,7 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
             const promociones = doc.data();
             console.log(promociones.timeEnd.split("T")[1])
             console.log(promociones.points)
-            if (hoy.toISOString().split(".")[0] >= promociones.timeStart && hoy.toISOString().split(".")[0] <= promociones.timeEnd && usr.points >= promociones.points && promociones.used >=1) {
+            if (hoy.toISOString().split(".")[0] >= promociones.timeStart && hoy.toISOString().split(".")[0] <= promociones.timeEnd && usr.points >= promociones.points && promociones.used >=1 && usr.points > 0) {
               var refArch = sg.ref(promociones.rute);
               sg.refFromURL(refArch).getDownloadURL().then(function (url) {
                 document.getElementById("promocionesList").innerHTML += `
@@ -121,24 +121,23 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                 var btnsSelected = promocionesList.querySelectorAll(".btn-selected");
                 btnsSelected.forEach((btn) =>{
                   btn.addEventListener("click", async (e) => {
-                    promocionesList.innerHTML='';
+                    document.getElementById("promocionesList").innerHTML ='';
                     try {
                       //elimina puntos por uso del cupon y los mete en su wallet
                       const getPromo = (id) => db.collection("Promociones").doc(id).get();
                       const info=await getPromo(e.target.dataset.id)                  
                       const promocionUsuario= info.data()
-                      document.getElementById("promocionesList").innerHTML =" ";
                       /** **/
                                 usuario.doc(registros.id).update({
                                   coupons: firebase.firestore.FieldValue.arrayUnion(e.target.dataset.id),
                                   points: (parseInt(usr.points) - parseInt(promocionUsuario.points))
                                 })
-                                document.getElementById("promocionesList").innerHTML =" ";
+                                document.getElementById("promocionesList").innerHTML =' ';
                       //elimina un cupon de las promociones
                       promocion.doc(e.target.dataset.id).update({
                         used: (parseInt(promociones.used) - 1)
                       })
-                      promocionesList.innerHTML='';
+                      document.getElementById("promocionesList").innerHTML ='';
                       //await db.collection("Promociones").doc(e.target.dataset.id).delete();
                     } catch (error) {
                       console.log(error);
