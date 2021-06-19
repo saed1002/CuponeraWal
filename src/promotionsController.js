@@ -80,7 +80,7 @@ promocion.
           })
         );
         const btnsEdit = tasksContainer.querySelectorAll(".btn-edit");
-        btnsEdit.addEventListener("click", async (e) => {
+        btnsEdit.forEach((btn)=>btn.addEventListener("click", async (e) => {
           console.log(e.target.dataset.id);
           let agregarPromociones = document.getElementById("agregarPromociones");
           var nombre = agregarPromociones["nombre"],
@@ -107,7 +107,7 @@ promocion.
             });
           isEditable = true
           idPromo = e.target.dataset.id
-        })
+        }))
         //Funcion agrega datos a "Usuarios"
         agregarPromociones.addEventListener("submit", async (e) => {
           console.log(idPromo)
