@@ -132,10 +132,11 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                       const cuponSelected=e.target.dataset.id
                             console.log(colecccionCupones);
                                 usuario.doc(registros.id).update({
-                                  coupons: cuponSelected.push(),
                                   points: (parseInt(usr.points) - parseInt(promocionUsuario.points))
                                 })
-
+                                usuario.doc(registros.id).push({
+                                  coupons: cuponSelected
+                                })
                       //elimina un cupon de las promociones
                       promocion.doc(e.target.dataset.id).update({
                         used: (parseInt(promociones.used) - 1)
