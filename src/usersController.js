@@ -129,7 +129,6 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                       const getPromo = (id) => db.collection("Promociones").doc(id).get();
                       const info= await getPromo(e.target.dataset.id)
                       const promocionUsuario= info.data()
-                      console.log(typeOf(cupones))
                       console.log(e.target.dataset.id)
                       var colecccionCupones=[]
                       colecccionCupones.push(cupones)
