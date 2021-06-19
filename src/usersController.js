@@ -124,24 +124,22 @@ var validacionUsuario = firebase.auth().onAuthStateChanged(userAuth => {
                   btn.addEventListener("click", async (e) => {
                     promocionesList.innerHTML='';
                     try {
-                      console.log(e.target.dataset.id)//id promocion
                       //elimina puntos por uso del cupon y los mete en su wallet
                       const getPromo = (id) => db.collection("Promociones").doc(id).get();
                       const info= await getPromo(e.target.dataset.id)
                       const promocionUsuario= info.data()
-                      console.log(e.target.dataset.id)
+                      /** **/
+                      /** **/
+                      const getCupones = (id) => db.collection("Usuarios").doc(id).get();
+                      const infoCupones= await getCupones(userAuth.email)
+                      const cuponesAlmacenados=infoCupones.data()
+                      colecccionCupones[colecccionCupones]=cuponesAlmacenados.coupons
                       colecccionCupones[colecccionCupones]=e.target.dataset.id
-                      usuario.doc(registros.id).onSnapshot(snapp=>{
-                          snapp.forEach(documents=>{
-                            var Usuarios=documents.data()
-                            colecccionCupones[colecccionCupones]=Usuarios.coupons
                             console.log(colecccionCupones);
                                 usuario.doc(registros.id).update({
                                   coupons: colecccionCupones,
                                   points: (parseInt(usr.points) - parseInt(promocionUsuario.points))
                                 })
-                          })
-                      })
 
                       //elimina un cupon de las promociones
                       promocion.doc(e.target.dataset.id).update({
